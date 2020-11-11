@@ -5,6 +5,10 @@ plugins {
 def keyFile = rootProject.file("../key.gradle")
 def keyPro = new Properties()
 
+static def buildTime() {
+    return new Date().format("yyyy_MM_dd_HH:mm")
+}
+
 android {
     compileSdkVersion rootProject.android.compileSdkVersion
     buildToolsVersion rootProject.android.buildToolsVersion
@@ -46,7 +50,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
     //不同渠道的签名，可以定义多个
     signingConfigs {
         release {
@@ -56,6 +64,16 @@ android {
             keyPassword keyPro.getProperty("kpwd")
             v1SigningEnabled true
             v2SigningEnabled true
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "争鸣_${rootProject.android.versionName}_${buildTime()}.apk"
         }
     }
 }
