@@ -1,0 +1,25 @@
+buildFeatures {
+        viewBinding true
+    }
+
+//activity 视图绑定
+   val view: View = LayoutInflater.from(this).inflate(R.layout.activity_main, null)
+        bding = ActivityMainBinding.bind(view)
+        setContentView(bding.root)
+
+//fragment 视图绑定
+
+//项目总体使用 kotlin+ rxjava + databading+ mvvm  arouter 实现 多module
+
+//项目使用的 沉浸式状态栏
+https://github.com/gyf-dev/ImmersionBar
+
+//recycleView adapter 实现
+https://github.com/mikepenz/FastAdapter
+
+//项目使用的图片压缩库
+https://github.com/zetbaitsu/Compressor
+implementation 'id.zelory:compressor:3.0.0'
+
+
+

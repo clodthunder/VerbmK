@@ -1,2 +1,4 @@
+include ':basic_helper'
+include ':basic_config'
 include ':app'
 rootProject.name = "VerbmK"

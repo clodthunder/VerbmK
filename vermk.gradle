@@ -5,7 +5,8 @@ ext {
                targetSdkVersion : 30,
                app_applicationId: 'com.lskj.gx.verbmk',
                versionCode      : 1,
-               versionName      : '1.0',]
+               versionName      : '1.0',
+               multiDexEnabled  : true]
 
     depsVersion = [
             appcompact            : ' 1.2.0',
@@ -16,12 +17,18 @@ ext {
             aroutercompiler       : '1.2.2',
             glide                 : '4.11.0',
             glidecompiler         : '4.11.0',
-            okhttp                : '4.8.1',
-            okhttp_log_interceptor: '4.8.1',
+            glide_okhttp          : '4.11.0',
+            okhttp                : '4.9.0',
+            okhttp_log_interceptor: '4.9.0',
             converter_gson        : '2.9.0',
             gson                  : '2.8.6',
             constraintlayout      : '2.0.4',
-            multidex              : '2.0.1',]
+            multidex              : '2.0.1',
+            retrofit              : '2.9.0',
+            immersionbar          : '3.0.0',
+            immersionbar_ktx      : '3.0.0',
+            compressor            : '3.0.0',
+    ]
 
     depsLibs = [appcompact            : "androidx.appcompat:appcompat:${depsVersion.appcompact}",
                 design                : "com.google.android.material:material:${depsVersion.design}",
@@ -32,12 +39,18 @@ ext {
                 aroutercompiler       : "com.alibaba:arouter-compiler:${depsVersion.aroutercompiler}",
                 glide                 : "com.github.bumptech.glide:glide:${depsVersion.glide}",
                 glidecompiler         : "com.github.bumptech.glide:compiler:${depsVersion.glidecompiler}",
+                glide_okhttp          : "com.github.bumptech.glide:okhttp3-integration:${depsVersion.glide_okhttp}",
                 okhttp                : "com.squareup.okhttp3:okhttp:${depsVersion.okhttp}",
                 okhttp_log_interceptor: "com.squareup.okhttp3:logging-interceptor:${depsVersion.okhttp_log_interceptor}",
                 converter_gson        : "com.squareup.retrofit2:converter-gson:${depsVersion.converter_gson}",
                 gson                  : "com.google.code.gson:gson:${depsVersion.gson}",
                 constraintlayout      : "androidx.constraintlayout:constraintlayout:${depsVersion.constraintlayout}",
-                multidex              : "androidx.multidex:multidex:${depsVersion.multidex}",]
+                multidex              : "androidx.multidex:multidex:${depsVersion.multidex}",
+                retrofit              : "com.squareup.retrofit2:retrofit:${depsVersion.retrofit}",
+                immersionbar          : "com.gyf.immersionbar:immersionbar:${depsVersion.immersionbar}",
+                immersionbar_ktx      : "com.gyf.immersionbar:immersionbar-ktx:${depsVersion.immersionbar_ktx}",
+                compressor            : "id.zelory:compressor:${depsVersion.compressor}",
+    ]
 
     testLibs = [junit            : 'junit:junit:4.13',
                 ext_junit        : 'androidx.test.ext:junit:1.1.2',

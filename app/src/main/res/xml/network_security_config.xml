@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config xmlns:tools="http://schemas.android.com/tools">
+    <!--这里可以限定服务端的ip地址起到安全的作用-->
+    <!--    <domain-config cleartextTrafficPermitted="true">-->
+    <!--        <domain includeSubdomains="true">192.168.1.125</domain>-->
+    <!--        <domain includeSubdomains="true">192.168.1.146</domain>-->
+    <!--        <domain includeSubdomains="true">192.168.2.129</domain>-->
+    <!--        <domain includeSubdomains="true">192.168.1.105</domain>-->
+    <!--        <domain includeSubdomains="true">192.168.2.102</domain>-->
+    <!--    </domain-config>-->
+    <!--    ca 证书-->
+    <!--    以 PEM 或 DER 格式将自签名或非公共 CA 证书添加到 res/raw/my_ca-->
+    <!--    <trust-anchors>-->
+    <!--        <certificates src="@raw/my_ca"/>-->
+    <!--    </trust-anchors>-->
+    <base-config
+        cleartextTrafficPermitted="true"
+        tools:ignore="InsecureBaseConfiguration" />
+</network-security-config>
