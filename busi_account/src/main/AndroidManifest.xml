@@ -7,6 +7,7 @@
             android:name=".LoginActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:theme="@style/ui_MyNormalTheme" />
+            android:theme="@style/ui_MyNormalTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
     </application>
 </manifest>

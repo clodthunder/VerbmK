@@ -12,14 +12,14 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/act_login_tb"
+            style="@style/ui_MyToolBarStyle"
             android:layout_width="match_parent"
             android:layout_height="@dimen/ui_tool_bar_height"
             app:layout_constraintBottom_toTopOf="@id/tv_divider_line"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0"
-            style="@style/ui_MyToolBarStyle">
+            app:layout_constraintVertical_bias="0">
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -205,6 +205,7 @@
                     android:layout_marginStart="@dimen/ui_space_20"
                     android:layout_marginTop="@dimen/ui_space_30"
                     android:layout_marginEnd="@dimen/ui_space_20"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"

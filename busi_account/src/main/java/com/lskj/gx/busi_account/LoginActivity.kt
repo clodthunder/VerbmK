@@ -2,7 +2,7 @@ package com.lskj.gx.busi_account
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.gyf.immersionbar.ktx.immersionBar
@@ -53,6 +53,15 @@ class LoginActivity : BaseActivity(), OnKeyBoardChangeListener {
     }
 
     override fun onKeyBoardShow(isShow: Boolean) {
+        if (isShow) {
+            if (dbding.vbSpace.visibility != View.VISIBLE) {
+                dbding.vbSpace.visibility = View.VISIBLE
+            }
+        } else {
+            if (dbding.vbSpace.visibility != View.GONE) {
+                dbding.vbSpace.visibility = View.GONE
+            }
+        }
         dbding.svLogin.post {
             if (isShow) {
                 dbding.svLogin.smoothScrollTo(
@@ -66,6 +75,5 @@ class LoginActivity : BaseActivity(), OnKeyBoardChangeListener {
                 dbding.svLogin.smoothScrollTo(0, 0)
             }
         }
-        Toast.makeText(this, "$isShow", Toast.LENGTH_LONG).show()
     }
 }
