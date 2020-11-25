@@ -5,6 +5,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.lskj.gx.basic_config.AroutConfig
 import com.lskj.gx.verbmk.R
 import com.lskj.gx.verbmk.databinding.ActivityLiveDataTestBinding
 import com.lskj.gx.verbmk.viewmodel.UserViewModel
@@ -14,7 +16,7 @@ import com.lskj.gx.verbmk.viewmodel.UserViewModel
  *   编写人: tzw
  *   功能描述: 测试livedata
  */
-//@Route(path = LIVE_DATA_TEST)
+@Route(path = AroutConfig.A_APP_LIVE_DATA_TEST)
 class LiveDataTest : AppCompatActivity() {
     private lateinit var dbding: ActivityLiveDataTestBinding
 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="ui_tool_bar_height">@dimen/ui_space_48</dimen>
+  <dimen name="ui_bnv_home_height">@dimen/ui_space_48</dimen>
+
+  <!--  toolbar 标题 back 按钮统一的高度 宽度 方便统一风格  < -->
+  <dimen name="ui_tb_comm_back_width">@dimen/ui_space_20</dimen>
+  <dimen name="ui_tb_comm_back_height">@dimen/ui_space_40</dimen>
+
+  <!--  toolbar 标题 back 按钮统一的高度 宽度 方便统一风格   -->
+  <dimen name="ui_arrow_down_width">@dimen/ui_space_50</dimen>
+  <dimen name="ui_arrow_down_height">@dimen/ui_space_25</dimen>
+
+  <dimen name="ui_font_24">24sp</dimen>
+  <dimen name="ui_font_12">12sp</dimen>
+  <dimen name="ui_font_14">14sp</dimen>
+  <dimen name="ui_font_16">16sp</dimen>
+  <dimen name="ui_font_18">18sp</dimen>
+  <dimen name="ui_font_36">36sp</dimen>
+  <dimen name="ui_font_40">40sp</dimen>
+  <dimen name="ui_font_54">54sp</dimen>
+  <dimen name="ui_font_96">96sp</dimen>
+
+  <dimen name="ui_space_0">0dp</dimen>
+  <dimen name="ui_space_8">8dp</dimen>
+  <dimen name="ui_space_10">10dp</dimen>
+  <dimen name="ui_space_16">16dp</dimen>
+  <dimen name="ui_space_20">20dp</dimen>
+  <dimen name="ui_space_25">25dp</dimen>
+  <dimen name="ui_space_30">30dp</dimen>
+  <dimen name="ui_space_40">40dp</dimen>
+  <dimen name="ui_space_48">48dp</dimen>
+  <dimen name="ui_space_50">50dp</dimen>
+  <dimen name="ui_space_54">54dp</dimen>
+  <dimen name="ui_space_80">80dp</dimen>
+  <dimen name="ui_space_96">96dp</dimen>
+  <dimen name="ui_space_150">150dp</dimen>
+  <dimen name="ui_space_200">200dp</dimen>
+</resources>

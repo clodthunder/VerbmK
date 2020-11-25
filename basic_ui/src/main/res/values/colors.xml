@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ui_color_primary">#fff</color>
+    <color name="ui_color_primary_dark">#fff</color>
+    <color name="ui_tool_bar_color">@color/ui_color_white</color>
+
+    <color name="ui_color_activated">@color/ui_color_315B6C</color>
+    <color name="ui_color_normal">@color/ui_color_cccfcc</color>
+
+    <!--    默认显示的分割线的颜色-->
+    <color name="ui_color_divider">@color/ui_color_cccfcc</color>
+
+    <!--    默认文本label 显示的颜色-->
+    <color name="ui_color_text_label">@color/ui_color_cccfcc</color>
+    <!--    默认文本值显示的颜色-->
+    <color name="ui_color_text">@color/ui_color_black</color>
+
+    <!--    控件默认 状态底部线的颜色-->
+    <color name="ui_control_normal">@color/ui_color_normal</color>
+    <!--    控件激活 状态底部线的颜色-->
+    <color name="ui_control_activated">@color/ui_color_activated</color>
+
+
+    <color name="ui_color_tb_text">@color/ui_color_2A2C30</color>
+    <color name="ui_color_cccfcc">#CCCFCC</color>
+    <color name="ui_label_bg">@color/ui_color_315B6C</color>
+    <color name="ui_color_red">@android:color/holo_red_dark</color>
+
+    <color name="ui_color_315B6C">#315B6C</color>
+    <color name="ui_color_white">#fff</color>
+    <color name="ui_color_black">#000</color>
+    <color name="ui_color_2A2C30">#2A2C30</color>
+
+</resources>

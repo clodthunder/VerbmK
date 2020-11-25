@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="80dp"
+    android:layout_height="80dp">
+
+    <com.lskj.gx.basic_widget.GxRoundImgView
+        android:id="@+id/rimg_real"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerInParent="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/temp"
+        app:lb_radius="0dp"
+        app:lt_radius="0dp"
+        app:rb_radius="0dp"
+        app:rt_radius="20dp" />
+
+    <com.lskj.gx.basic_widget.GxRoundImgView
+        android:id="@+id/rimg_del"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:scaleType="fitXY"
+        android:src="@android:color/holo_green_dark"
+        app:lb_radius="0dp"
+        app:lt_radius="0dp"
+        app:rb_radius="0dp"
+        app:rt_radius="20dp" />
+</RelativeLayout>

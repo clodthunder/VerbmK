@@ -19,14 +19,14 @@ class AppContext {
     }
 
     fun init(c: Application) {
-        context = c.applicationContext;
-        app = c;
+        context = c.applicationContext
+        app = c
     }
 
     fun getContext(): Context {
         if (!this::context.isInitialized) {
             throw RuntimeException("AppContext context 尚未初始化--!");
         }
-        return context;
+        return context
     }
 }

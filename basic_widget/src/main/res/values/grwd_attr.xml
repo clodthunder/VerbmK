@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GxRoundWithDelete">
+        <attr name="real_height" format="dimension" />
+        <attr name="real_width" format="dimension" />
+        <attr name="del_height" format="dimension" />
+        <attr name="del_width" format="dimension" />
+    </declare-styleable>
+</resources>

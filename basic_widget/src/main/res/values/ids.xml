@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="round_with_delete_real_image" type="id" />
+    <item name="round_with_delete_del_image" type="id" />
+</resources>

@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
 }
+
 def keyFile = rootProject.file("../key.gradle")
 def keyPro = new Properties()
 
@@ -39,13 +40,23 @@ android {
         dataBinding true
     }
 
+    resourcePrefix "app_"
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled rootProject.android.multiDexEnabled
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    resourcePrefix "app_"
+
+    lintOptions {
+        abortOnError false
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -54,11 +65,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    repositories {
-        flatDir {
-            dirs 'libs'
-        }
-    }
+
     //不同渠道的签名，可以定义多个
     signingConfigs {
         release {
@@ -70,11 +77,6 @@ android {
             v2SigningEnabled true
         }
     }
-
-    lintOptions {
-        abortOnError false
-    }
-
 
     android.applicationVariants.all { variant ->
         variant.outputs.all {
@@ -93,6 +95,7 @@ dependencies {
     testImplementation rootProject.testLibs.junit
     androidTestImplementation rootProject.testLibs.ext_junit
     testImplementation rootProject.testLibs.espresso
+    implementation rootProject.depsLibs.constraintlayout
 //    moduel comm end
 
     //fragment 导航组件
@@ -122,8 +125,7 @@ dependencies {
 
     //代码实例化布局
     implementation "org.jetbrains.anko:anko:$anko_version"
-    //
-    implementation rootProject.depsLibs.constraintlayout
+
     //multidex
     implementation rootProject.depsLibs.multidex
 
@@ -137,12 +139,17 @@ dependencies {
     kapt rootProject.depsLibs.glidecompiler
 
     //arouter库
-    implementation(rootProject.depsLibs.arouterapi) {
-        exclude group: 'com.android.support'
-    }
+    implementation rootProject.depsLibs.arouterapi
     kapt rootProject.depsLibs.aroutercompiler
+
+    //toolbar
+    implementation rootProject.depsLibs.immersionbar
+    implementation rootProject.depsLibs.immersionbar_ktx
 
     //依赖私有库
     implementation project(':basic_config')
     implementation project(':basic_helper')
+    implementation project(':basic_ui')
+    implementation project(':basi_base')
+    implementation project(':busi_account')
 }

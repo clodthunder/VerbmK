@@ -6,6 +6,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.lskj.gx.basic_config.AroutConfig
 import com.lskj.gx.verbmk.R
 import com.lskj.gx.verbmk.databinding.ActivityAdapterDbTestBinding
 import com.lskj.gx.verbmk.entity.User
@@ -15,6 +17,7 @@ import com.lskj.gx.verbmk.entity.User
  *   编写人: tzw
  *   功能描述:
  */
+@Route(path = AroutConfig.A_APP_ADAPTER_DBDING_TEST)
 class Adapte_dataBanding_test : AppCompatActivity() {
     //视图绑定
     private lateinit var bding: ActivityAdapterDbTestBinding

@@ -19,9 +19,9 @@ import com.lskj.gx.basic_config.AppContext
  */
 class GlideUtil {
 
-    companion object {
-        val TAG: String = GlideUtil.javaClass.simpleName
 
+    companion object {
+        val TAG: String = "GlideUtil"
         val instance: GlideUtil by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
             GlideUtil()
         }

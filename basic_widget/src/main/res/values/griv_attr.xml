@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GxRoundImgView">
+        <!--    左上-->
+        <attr name="lt_radius" format="dimension" />
+        <!--    左下-->
+        <attr name="lb_radius" format="dimension" />
+        <!--    右上-->
+        <attr name="rt_radius" format="dimension" />
+        <!--    右下-->
+        <attr name="rb_radius" format="dimension" />
+    </declare-styleable>
+</resources>

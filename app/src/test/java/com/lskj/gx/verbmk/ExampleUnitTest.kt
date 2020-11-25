@@ -1,6 +1,5 @@
 package com.lskj.gx.verbmk
 
-import androidx.lifecycle.MutableLiveData
 import com.lskj.gx.verbmk.entity.UserLiveData
 import org.junit.Assert.assertEquals
 import org.junit.Ignore
@@ -19,11 +18,12 @@ class ExampleUnitTest {
     }
 
     @Test
+    @Ignore
     fun testMult() {
-        val userVms: MutableLiveData<List<UserLiveData>> =
-            MutableLiveData<List<UserLiveData>>().also {
-                loadUser()
-            }
+//        val userVms: MutableLiveData<List<UserLiveData>> =
+//            MutableLiveData<List<UserLiveData>>().also {
+//                loadUser()
+//            }
     }
 
     fun loadUser() {

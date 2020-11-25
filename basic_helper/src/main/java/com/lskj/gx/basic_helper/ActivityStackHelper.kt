@@ -25,14 +25,14 @@ class ActivityStackHelper {
         printAcList()
     }
 
-    fun printAcList() {
+    private fun printAcList() {
         val acNames: List<String> = if (acList.isNullOrEmpty().not()) {
             acList.map { it.packageName + it.javaClass.simpleName }
         } else {
             mutableListOf()
         }
         var sbStr = StringBuilder()
-        if (acNames.size > 0) {
+        if (acNames.isNotEmpty()) {
             sbStr.append("${TAG}-acList当前包含【\n")
             acNames.forEach { cStr ->
                 sbStr.append(cStr + "\n")

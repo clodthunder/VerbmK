@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="ui_FullScreen" parent="Theme.AppCompat.Light">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="ui_MyNormalTheme" parent="Theme.AppCompat.Light">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+    </style>
+
+    <!--修改 overflow的图标-->
+    <style name="ui_OverflowMenuButton" parent="@android:style/Widget.Holo.ActionButton.Overflow">
+        <item name="android:src">@drawable/ui_menu_home</item>
+    </style>
+    <!--  自定义toolBar Style-->
+    <style name="ui_MyToolBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="titleMargin">0dp</item>
+        <!--解决左侧空隙-->
+        <item name="contentInsetStart">0dp</item>
+        <!-- 此处修改toolBar 的背景颜色，默认同时也是toolbar menu 的背景颜色 -->
+        <item name="android:background">@color/ui_tool_bar_color</item>
+        <!-- 此处修改toolbar 的标题颜色 -->
+        <item name="titleTextAppearance">@style/ui_MyToolBarTitleStyle</item>
+        <item name="android:navigationIcon">@drawable/ui_comm_black_back</item>
+        <item name="subtitleTextAppearance">
+            @style/ui_MyToolBarSubTitleStyle
+        </item>
+        <item name="android:minHeight">?android:attr/actionBarSize</item>
+        <item name="maxButtonHeight" tools:ignore="PrivateResource">
+            @dimen/abc_action_bar_default_height_material
+        </item>
+        <item name="buttonGravity">top</item>
+        <item name="collapseIcon">?attr/homeAsUpIndicator</item>
+        <item name="collapseContentDescription" tools:ignore="PrivateResource">
+            @string/abc_toolbar_collapse_description
+        </item>
+        <item name="contentInsetStartWithNavigation" tools:ignore="PrivateResource">
+            @dimen/abc_action_bar_content_inset_with_nav
+        </item>
+        <item name="android:paddingLeft" tools:ignore="PrivateResource">
+            @dimen/abc_action_bar_default_padding_start_material
+        </item>
+        <item name="android:paddingRight" tools:ignore="PrivateResource">
+            @dimen/abc_action_bar_default_padding_end_material
+        </item>
+    </style>
+
+    <!-- 自定义toolBar 的title 字体  -->
+    <style name="ui_MyToolBarTitleStyle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <!-- 这里修改字体大小 -->
+        <item name="android:textSize" tools:ignore="PrivateResource">
+            @dimen/ui_font_18
+        </item>
+        <!-- 这里修改字体颜色 -->
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+    <!-- 自定义Toolbar sub title 字体  -->
+    <style name="ui_MyToolBarSubTitleStyle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <!-- 这里修改字体大小 -->
+        <item name="android:textSize" tools:ignore="PrivateResource">
+            @dimen/abc_text_size_subtitle_material_toolbar
+        </item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <!-- 这里修改字体颜色 -->
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+    <!--Toolbar 修改显示位置-->
+    <style name="ui_OverflowMenu" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <!-- Required for pre-Lollipop. -->
+        <item name="overlapAnchor">false</item>
+    </style>
+
+    <!--    自定义edit text 样式-->
+    <style name="ui_edit_text_style" parent="Base.V7.Widget.AppCompat.EditText">
+        <!--        <item name="android:background">?attr/editTextBackground</item>-->
+        <item name="android:textColor">@color/ui_color_text</item>
+        <!--        <item name="android:textAppearance">?android:attr/textAppearanceMediumInverse</item>-->
+        <!--        <item name="android:textCursorDrawable">@drawable/abc_text_cursor_material</item>-->
+        <!-- AppCompatEditText默认状态状态设置底线颜色 -->
+        <item name="colorControlNormal">@color/ui_control_normal</item>
+        <!-- AppCompatEditText选择的底线颜色 -->
+        <item name="colorControlActivated">@color/ui_control_activated</item>
+    </style>
+</resources>

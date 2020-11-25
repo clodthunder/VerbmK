@@ -29,67 +29,61 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <TextView
             android:id="@+id/tv_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{user.enable?user.username:@string/str_default_uname}"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0" />
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/btn_add_stack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="@dimen/ui_space_10"
             android:text="enable"
-            app:layout_constraintBottom_toTopOf="@+id/tv_user_name"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_remove_stack"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/tv_user_name"
+            app:layout_constraintVertical_bias="0" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_remove_stack"
+        <Button
+            android:id="@id/btn_remove_stack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="53dp"
+            android:layout_marginStart="@dimen/ui_space_10"
             android:text="disable"
-            app:layout_constraintBottom_toTopOf="@+id/tv_user_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_add_stack" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_clear_stack"
+            app:layout_constraintStart_toEndOf="@id/btn_add_stack"
+            app:layout_constraintTop_toBottomOf="@id/tv_user_name"
+            app:layout_constraintVertical_bias="0" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_clear_stack"
+        <Button
+            android:id="@id/btn_clear_stack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="157dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="166dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginStart="@dimen/ui_space_10"
             android:text="@{@string/str_label+user.enable}"
-            app:layout_constraintBottom_toTopOf="@+id/tv_user_name"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_remove_stack" />
+            app:layout_constraintStart_toEndOf="@id/btn_remove_stack"
+            app:layout_constraintTop_toBottomOf="@id/tv_user_name"
+            app:layout_constraintVertical_bias="0" />
 
         <EditText
             android:id="@+id/et_user_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="@dimen/ui_space_10"
             android:ems="10"
             android:hint="测试修改用户名-动态"
             android:inputType="textPersonName"
@@ -97,39 +91,79 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_clear_stack"
-            app:layout_constraintVertical_bias="0.08" />
+            app:layout_constraintTop_toBottomOf="@id/btn_add_stack"
+            app:layout_constraintVertical_bias="0" />
 
         <ImageView
             android:id="@+id/iv_header_pic"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="@dimen/ui_space_10"
             app:error="@{errorDraw}"
             app:gxImageUrl="@{user.userPicUrl}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_change_pic"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_user_name"
+            app:layout_constraintVertical_bias="0"
             app:placeholder="@{holder}" />
 
         <Button
-            android:id="@+id/btn_change_pic"
+            android:id="@id/btn_change_pic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="@dimen/ui_space_10"
+            android:layout_marginTop="@dimen/ui_space_10"
             android:text="更改图片路径"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_header_pic"
+            app:layout_constraintTop_toBottomOf="@+id/et_user_name"
+            app:layout_constraintVertical_bias="0" />
+
+        <View
+            android:id="@+id/vi_spilte"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/ui_space_10"
+            android:layout_marginTop="@dimen/ui_space_10"
+            android:layout_marginBottom="@dimen/ui_space_10"
+            android:background="@color/app_black"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_header_pic"
+            app:layout_constraintVertical_bias="0" />
+
+        <Button
+            android:id="@+id/btn_invoke_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/ui_space_10"
+            android:layout_marginTop="@dimen/ui_space_10"
+            android:text="invoke_login"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_invoke_live_data_test"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_header_pic" />
+            app:layout_constraintTop_toBottomOf="@id/vi_spilte"
+            app:layout_constraintVertical_bias="0" />
 
-
+        <Button
+            android:id="@id/btn_invoke_live_data_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/ui_space_10"
+            android:layout_marginTop="@dimen/ui_space_10"
+            android:text="invoke live data"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/btn_invoke_login"
+            app:layout_constraintTop_toBottomOf="@id/vi_spilte"
+            app:layout_constraintVertical_bias="0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

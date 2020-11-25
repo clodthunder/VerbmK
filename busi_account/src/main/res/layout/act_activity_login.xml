@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/act_login_tb"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ui_tool_bar_height"
+            app:layout_constraintBottom_toTopOf="@id/tv_divider_line"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0"
+            style="@style/ui_MyToolBarStyle">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/ui_tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="这是标题"
+                    android:textColor="@color/ui_color_tb_text"
+                    android:textSize="@dimen/ui_font_16"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ui_iv_back"
+                    android:layout_width="@dimen/ui_tb_comm_back_width"
+                    android:layout_height="@dimen/ui_tb_comm_back_height"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/ui_comm_black_back"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/ui_tv_title"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <View
+            android:id="@+id/tv_divider_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/ui_space_10"
+            android:layout_marginEnd="@dimen/ui_space_10"
+            android:background="@color/ui_color_divider"
+            app:layout_constraintBottom_toTopOf="@id/sv_login"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/act_login_tb"
+            app:layout_constraintVertical_bias="0" />
+
+        <ScrollView
+            android:id="@+id/sv_login"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_divider_line"
+            app:layout_constraintVertical_weight="1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="140dp">
+
+                <ImageView
+                    android:id="@+id/iv_login_logo"
+                    android:layout_width="@dimen/ui_space_80"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="@dimen/ui_space_80"
+                    android:src="@drawable/act_splash_logo"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_ad_name"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <TextView
+                    android:id="@id/tv_ad_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ui_space_10"
+                    android:text="aaaa"
+                    android:textColor="@color/ui_color_tb_text"
+                    android:textSize="@dimen/ui_font_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_login_logo" />
+
+                <TextView
+                    android:id="@+id/tv_label_name"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/ui_space_16"
+                    android:layout_marginTop="@dimen/ui_space_30"
+                    android:gravity="center"
+                    android:text="用户名"
+                    android:textColor="@color/ui_color_tb_text"
+                    android:textSize="@dimen/ui_font_16"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/et_user_name"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_ad_name"
+                    app:layout_constraintVertical_bias="0" />
+
+                <com.lskj.gx.basic_widget.GxClearEditText
+                    android:id="@id/et_user_name"
+                    style="@style/ui_edit_text_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/ui_space_10"
+                    android:layout_marginTop="@dimen/ui_space_30"
+                    android:layout_marginEnd="@dimen/ui_space_16"
+                    android:hint="请输入用户名"
+                    android:textSize="@dimen/ui_font_16"
+                    app:layout_constraintBaseline_toBaselineOf="@id/tv_label_name"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@id/tv_label_name"
+                    app:layout_constraintTop_toBottomOf="@id/tv_ad_name"
+                    app:layout_constraintVertical_bias="0.0" />
+
+
+                <TextView
+                    android:id="@+id/tv_label_pwd"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/ui_space_16"
+                    android:layout_marginTop="@dimen/ui_space_30"
+                    android:gravity="center"
+                    android:text="密码"
+
+                    android:textColor="@color/ui_color_black"
+                    android:textSize="@dimen/ui_font_16"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/et_user_pwd"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_label_name"
+                    app:layout_constraintVertical_bias="0" />
+
+                <com.lskj.gx.basic_widget.GxClearEditText
+                    android:id="@id/et_user_pwd"
+                    style="@style/ui_edit_text_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/ui_space_10"
+                    android:layout_marginTop="@dimen/ui_space_30"
+                    android:layout_marginEnd="@dimen/ui_space_16"
+                    android:hint="请输入密码"
+                    android:textSize="@dimen/ui_font_16"
+                    app:layout_constraintBaseline_toBaselineOf="@id/tv_label_pwd"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@id/tv_label_pwd"
+                    app:layout_constraintTop_toBottomOf="@id/et_user_name"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <Button
+                    android:id="@+id/btn_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/ui_space_20"
+                    android:layout_marginTop="@dimen/ui_space_30"
+                    android:layout_marginEnd="@dimen/ui_space_20"
+                    android:text="@string/act_login_str"
+                    android:textSize="@dimen/ui_font_16"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_label_pwd"
+                    app:layout_constraintVertical_bias="0" />
+
+                <View
+                    android:id="@+id/vb_space"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="@dimen/ui_space_20"
+                    android:layout_marginTop="@dimen/ui_space_30"
+                    android:layout_marginEnd="@dimen/ui_space_20"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btn_login" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
