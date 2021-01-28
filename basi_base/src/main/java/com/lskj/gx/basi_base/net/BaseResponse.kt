@@ -8,8 +8,8 @@ import java.io.Serializable
  *   功能描述: 底层封装 response
  */
 class BaseResponse<R : Serializable?> {
-    var code = 0
-    var message: String? = null
+    var code: Int? = 0
+    var msg: String? = null
     var data: R? = null
         private set
 

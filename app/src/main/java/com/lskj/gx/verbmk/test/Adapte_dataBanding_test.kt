@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.lskj.gx.basic_config.AroutConfig
+import com.lskj.gx.lib_common.config.AroutConfig
 import com.lskj.gx.verbmk.R
 import com.lskj.gx.verbmk.databinding.ActivityAdapterDbTestBinding
 import com.lskj.gx.verbmk.entity.User

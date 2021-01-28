@@ -8,12 +8,13 @@ import androidx.databinding.DataBindingUtil
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.lskj.gx.basi_base.activity.BaseActivity
-import com.lskj.gx.basic_config.AroutConfig
+import com.lskj.gx.lib_common.config.AroutConfig
 import com.lskj.gx.verbmk.databinding.ActivityMainBinding
 import com.lskj.gx.verbmk.entity.User
 
 @Route(path = AroutConfig.A_APP_MAIN)
-class MainActivity : BaseActivity() {
+class
+MainActivity : BaseActivity() {
     //视图绑定
     private lateinit var bding: ActivityMainBinding
     private lateinit var user: User

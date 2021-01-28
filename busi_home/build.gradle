@@ -2,7 +2,7 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'kotlin-android-extensions'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -128,7 +128,7 @@ dependencies {
     implementation rootProject.depsLibs.immersionbar_ktx
 
     //依赖私有库
-    implementation project(':basic_config')
+    implementation project(':lib_common')
     implementation project(':basic_helper')
     implementation project(':basic_ui')
     implementation project(':basi_base')

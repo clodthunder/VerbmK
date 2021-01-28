@@ -7,7 +7,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.gyf.immersionbar.ktx.hideStatusBar
 import com.gyf.immersionbar.ktx.immersionBar
 import com.lskj.gx.basi_base.activity.BaseActivity
-import com.lskj.gx.basic_config.AroutConfig
+import com.lskj.gx.lib_common.config.AroutConfig
 import com.lskj.gx.verbmk.databinding.ActivitySplashBinding
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
@@ -52,7 +52,6 @@ class SplashActivity : BaseActivity() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { //跳转
-                //测试 跳转 观察者模式
                 ARouter.getInstance().build(AroutConfig.A_APP_MAIN).navigation()
                 finish()
             }

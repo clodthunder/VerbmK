@@ -13,7 +13,7 @@
             android:id="@+id/tv_app_logo_left"
             android:layout_width="wrap_content"
             android:layout_height="54dp"
-            android:text="争"
+            android:text="K"
             android:textColor="@color/ui_color_315B6C"
 
             android:textSize="@dimen/ui_font_36"
@@ -39,7 +39,7 @@
             android:id="@id/tv_app_logo_right"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/ui_space_54"
-            android:text="鸣"
+            android:text="O"
             android:textColor="@color/ui_color_315B6C"
             android:textSize="@dimen/ui_font_36"
             app:layout_constraintBaseline_toBaselineOf="@id/tv_app_logo_left"
@@ -51,7 +51,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="争鸣信息技术有限公司"
+            android:text="xx信息技术有限公司"
             android:textColor="@color/ui_color_black"
             android:textSize="@dimen/ui_font_14"
             app:layout_constraintBottom_toBottomOf="parent"

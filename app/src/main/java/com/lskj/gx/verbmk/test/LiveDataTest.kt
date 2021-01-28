@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.lskj.gx.basic_config.AroutConfig
+import com.lskj.gx.lib_common.config.AroutConfig
 import com.lskj.gx.verbmk.R
 import com.lskj.gx.verbmk.databinding.ActivityLiveDataTestBinding
 import com.lskj.gx.verbmk.viewmodel.UserViewModel
@@ -33,7 +33,7 @@ class LiveDataTest : AppCompatActivity() {
             for (uData in uDatas) {
                 sbStr.append(uData + "\n")
             }
-            dbding.tvStrNotif.setText("users:\n$sbStr")
+            dbding.tvStrNotif.text = "users:\n$sbStr"
         })
         dbding.btnAdd.setOnClickListener {
             model.addUser()

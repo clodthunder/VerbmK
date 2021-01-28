@@ -10,7 +10,7 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.lskj.gx.basic_config.AppContext
+import com.lskj.gx.lib_common.config.AppContext
 
 /**
  *   创建时间:  2020/11/13

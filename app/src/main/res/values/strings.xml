@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VerbmK</string>
+    <string name="app_name">VermbK</string>
     <string name="str_label">是否启用</string>
     <string name="str_default_uname">默认的用户名</string>
 </resources>

@@ -2,7 +2,7 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'kotlin-android-extensions'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -62,6 +62,9 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation rootProject.depsLibs.appcompact
     implementation rootProject.depsLibs.design
+    implementation rootProject.depsLibs.recyclerview
+    implementation project(path: ':library')
+
     testImplementation rootProject.testLibs.junit
     androidTestImplementation rootProject.testLibs.ext_junit
     testImplementation rootProject.testLibs.espresso
@@ -78,11 +81,20 @@ dependencies {
     implementation 'androidx.collection:collection-ktx:1.1.0'
 
     //生命周期组件
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-beta01'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-beta01'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0-beta01'
     implementation 'androidx.lifecycle:lifecycle-reactivestreams-ktx:2.3.0-beta01'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+    //这3个协程需要依赖
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-beta01'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-beta01'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0-beta01'
+
+    //retrofit
+    implementation rootProject.depsLibs.retrofit
+    implementation rootProject.depsLibs.okhttp
+    implementation rootProject.depsLibs.okhttp_log_interceptor
+    implementation rootProject.depsLibs.gson
+    implementation rootProject.depsLibs.converter_gson
 
     //数据库组件
     implementation 'androidx.room:room-ktx:2.2.5'
@@ -115,10 +127,12 @@ dependencies {
     implementation rootProject.depsLibs.immersionbar
     implementation rootProject.depsLibs.immersionbar_ktx
 
-    implementation project(':basic_config')
+
+    implementation project(':lib_common')
     implementation project(':basic_helper')
     implementation project(':basic_ui')
     implementation project(':basi_base')
     implementation project(':basic_widget')
+    implementation project(':basic_okhttp')
 
 }

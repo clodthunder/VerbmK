@@ -28,6 +28,8 @@ ext {
             immersionbar          : '3.0.0',
             immersionbar_ktx      : '3.0.0',
             compressor            : '3.0.0',
+            preference_ktx        : '1.1.1',
+            xpopup                : '2.2.10',
     ]
 
     depsLibs = [appcompact            : "androidx.appcompat:appcompat:${depsVersion.appcompact}",
@@ -50,9 +52,11 @@ ext {
                 immersionbar          : "com.gyf.immersionbar:immersionbar:${depsVersion.immersionbar}",
                 immersionbar_ktx      : "com.gyf.immersionbar:immersionbar-ktx:${depsVersion.immersionbar_ktx}",
                 compressor            : "id.zelory:compressor:${depsVersion.compressor}",
+                preference_ktx        : "androidx.preference:preference-ktx:${depsVersion.preference_ktx}",
+                xpopup                : "com.lxj.xpopup:${depsVersion.xpopup}",
     ]
 
-    testLibs = [junit            : 'junit:junit:4.13',
+    testLibs = [junit            : 'junit:junit:4.12',
                 ext_junit        : 'androidx.test.ext:junit:1.1.2',
                 espresso         : 'androidx.test.espresso:espresso-core:3.3.0',
                 arch_core_testing: "androidx.arch.core:core-testing:2.1.0",
