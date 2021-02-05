@@ -1,11 +1,10 @@
-package com.lskj.gx.busi_account.error
+package com.lskj.gx.lib_common.error
 
+import android.text.TextUtils
 import android.util.Log
 import com.google.gson.JsonSyntaxException
-import com.lskj.gx.busi_account.BuildConfig
-import okhttp3.Request
+import com.lskj.gx.lib_common.BuildConfig
 import java.net.ConnectException
-import kotlin.system.exitProcess
 
 /**
  *   创建时间:  2021/1/28
@@ -29,7 +28,7 @@ class GlobalExceptionHandler : Thread.UncaughtExceptionHandler {
     }
 
     override fun uncaughtException(mineHandler: Thread, throwable: Throwable) {
-        if (!handleException(throwable)) {
+        if (!handleSystemException(throwable)) {
             //如果用户没有处理则让系统默认的异常处理器来处理
             defaultHandler?.uncaughtException(mineHandler, throwable);
         } else {
@@ -45,10 +44,14 @@ class GlobalExceptionHandler : Thread.UncaughtExceptionHandler {
         }
     }
 
+    fun handleCustomerError(error: String?) {
+        handleSystemException(BusinessException(error))
+    }
+
     /**
      * 自定义错误处理方法
      */
-    fun handleException(throwable: Throwable): Boolean {
+    fun handleSystemException(throwable: Throwable): Boolean {
         throwable.let {
             //todo 保存错误信息到本地
             var msg = if (BuildConfig.DEBUG) it.message else it.stackTraceToString()
@@ -61,42 +64,27 @@ class GlobalExceptionHandler : Thread.UncaughtExceptionHandler {
                 Log.e(TAG, "error JsonSyntaxException:$msg");
                 return true
             }
+            if (it is ConnectException) {
+                Log.e(TAG, "error ConnectException:$msg");
+                return true
+            }
             if (it is MobileBusinessException) {
                 val mobile: MobileBusinessException = it
                 mobile.let { mobileEx ->
                     //打印当前登录人 请求时间
-
-                    //打印请求url 和请求参数
-                    val request: Request? = mobileEx.request
-                    request.let { reqst ->
-                        val method = request?.method
-                        Log.e(TAG, "------headers start-------\n")
-                        reqst?.headers?.forEach { pair ->
-                            Log.e(TAG, "--key:" + pair.first + "--value:" + pair.second)
-                        }
-                        Log.e(TAG, "------headers end-------\n")
+                    val errorCode = mobile.code
+                    val errorMsg = if (TextUtils.isEmpty(mobile.msg)) {
+                        ErrorCode.getByCode(mobile.code)
+                    } else {
+                        mobile.msg
                     }
-                    val errorCode = mobile.errorCode
                     errorCode.let {
-                        if (errorCode != null) {
-                            // code 8001 退出到登录界面
-                            if (errorCode.ordinal == 8001) {
-                                Log.e(TAG, "error MobileBusinessException:" + errorCode.getMsg())
-
-                            }
-
-                        } else {
-                            Log.e(TAG, "error ConnectException:$msg");
-                        }
-                        if (request == null) {
-                            return true
-                        }
+                        //code 8001 退出到登录界面
+                        Log.e(TAG, "error MobileBusinessException:$errorCode, msg=$errorMsg")
                     }
                 }
+                return true
             }
-            //退出程序
-            android.os.Process.killProcess(android.os.Process.myPid());
-            exitProcess(1);
         }
         return false
     }

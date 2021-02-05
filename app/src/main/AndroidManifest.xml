@@ -58,8 +58,14 @@
             android:name=".test.Adapte_dataBanding_test"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <!--        -->
         <activity
             android:name=".test.LiveDataTest"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <!--        仪表盘-->
+        <activity
+            android:name=".YbpActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 

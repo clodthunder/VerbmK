@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity"
     tools:ignore="ResourceName">
+
     <data>
 
         <import type="com.lskj.gx.verbmk.utils.GlideUtil" />
@@ -144,10 +145,23 @@
             android:layout_marginTop="@dimen/ui_space_10"
             android:text="invoke_login"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btn_invoke_live_data_test"
-            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintEnd_toStartOf="@+id/btn_invoke_ybp"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vi_spilte"
+            app:layout_constraintVertical_bias="0" />
+
+        <Button
+            android:id="@id/btn_invoke_ybp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/ui_space_10"
+            android:layout_marginTop="@dimen/ui_space_10"
+            android:text="仪表盘"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_invoke_live_data_test"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toEndOf="@id/btn_invoke_login"
             app:layout_constraintTop_toBottomOf="@id/vi_spilte"
             app:layout_constraintVertical_bias="0" />
 
@@ -161,7 +175,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toEndOf="@id/btn_invoke_login"
+            app:layout_constraintStart_toEndOf="@id/btn_invoke_ybp"
             app:layout_constraintTop_toBottomOf="@id/vi_spilte"
             app:layout_constraintVertical_bias="0" />
     </androidx.constraintlayout.widget.ConstraintLayout>

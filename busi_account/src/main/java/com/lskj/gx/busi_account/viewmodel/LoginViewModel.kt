@@ -2,6 +2,7 @@ package com.lskj.gx.busi_account.viewmodel
 
 import android.content.Context
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -25,6 +26,9 @@ class LoginViewModel(
 ) : ViewModel() {
     private val TAG: String = LoginDataSource::class.java.simpleName
 
+    //登录接口登录结果
+    private var loginResult: MutableLiveData<Boolean> = MutableLiveData(false)
+
     /**
      * 获取dataSource
      */
@@ -41,7 +45,7 @@ class LoginViewModel(
     /**
      * 使用协程请求
      */
-    fun loginWithXc(name: String, pwd: String, context: Context) {
+    fun loginWithXc(name: String, pwd: String, context: Context): MutableLiveData<Boolean> {
         viewModelScope.launch(Dispatchers.Main) {
             val loadingPopup = XPopup.Builder(context)
                 .dismissOnBackPressed(false)
@@ -50,6 +54,7 @@ class LoginViewModel(
                 .show() as LoadingPopupView
             //请求登录信息
             val data: Boolean = loginDataS.login(name, pwd)
+            val isLogined: Boolean = data
             if (data) {
                 //请求用户信息
                 val userDto = userDataS.getUserInfo()
@@ -73,7 +78,13 @@ class LoginViewModel(
                 loadingPopup.postDelayed({ loadingPopup.setTitle("登录失败") }, 100)
             }
             loadingPopup.delayDismiss(1600)
+            if (isLogined) {
+                loginResult.postValue(true);
+            } else {
+                loginResult.postValue(false);
+            }
         }
+        return loginResult
     }
 }
 

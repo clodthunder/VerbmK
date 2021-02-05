@@ -8,8 +8,8 @@ import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.viewModelScope
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.gyf.immersionbar.ktx.immersionBar
-import com.lskj.gx.basi_base.activity.BaseActivity
 import com.lskj.gx.basic_helper.KeyBoardHelper
 import com.lskj.gx.basic_helper.ScreenHelper
 import com.lskj.gx.basic_helper.intfaces.OnKeyBoardChangeListener
@@ -17,6 +17,7 @@ import com.lskj.gx.busi_account.R
 import com.lskj.gx.busi_account.SingleLoadingUtil
 import com.lskj.gx.busi_account.databinding.ActActivityLoginBinding
 import com.lskj.gx.busi_account.viewmodel.LoginViewModel
+import com.lskj.gx.lib_common.base.activity.BaseActivity
 import com.lskj.gx.lib_common.config.AroutConfig
 import kotlinx.coroutines.cancel
 
@@ -72,13 +73,18 @@ class LoginActivity : BaseActivity(), OnKeyBoardChangeListener {
                 dbding.etUserName.error = "用户名不能为空！"
                 return@setOnClickListener
             }
-            var pwdStr = dbding.etUserPwd.text.toString()
+            val pwdStr = dbding.etUserPwd.text.toString()
             if (TextUtils.isEmpty(pwdStr)) {
                 dbding.etUserPwd.requestFocus()
                 dbding.etUserPwd.error = "密码不能为空！"
                 return@setOnClickListener
             }
-            loginModel.loginWithXc(nameStr, pwdStr,this)
+            loginModel.loginWithXc(nameStr, pwdStr, this).observe(this, {
+                if (it) {
+                    ARouter.getInstance().build(AroutConfig.A_APP_MAIN).navigation()
+                    finish()
+                }
+            })
         }
     }
 

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity"
+    tools:ignore="ResourceName">
+
+    <data />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.lskj.gx.basic_widget.MeterView
+            android:id="@+id/meterv_test"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:default_max_value="80"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:text_title_dial="检测数值"
+            tools:ignore="MissingConstraints" />
+
+        <com.lskj.gx.basic_widget.GxClearEditText
+            android:id="@+id/gcet_num"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="@color/ui_color_white"
+            android:hint="current"
+            android:textColor="@color/ui_color_black"
+            app:layout_constraintBottom_toTopOf="@+id/btn_zb"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintEnd_toStartOf="@+id/gcet_min"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/meterv_test" />
+
+        <com.lskj.gx.basic_widget.GxClearEditText
+            android:id="@id/gcet_min"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="@color/ui_color_white"
+            android:hint="min"
+            android:textColor="@color/ui_color_black"
+            app:layout_constraintBottom_toTopOf="@+id/btn_zb"
+            app:layout_constraintEnd_toStartOf="@+id/gcet_max"
+            app:layout_constraintStart_toEndOf="@id/gcet_num"
+            app:layout_constraintTop_toBottomOf="@id/meterv_test" />
+
+        <com.lskj.gx.basic_widget.GxClearEditText
+            android:id="@id/gcet_max"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="@color/ui_color_white"
+            android:hint="max"
+            android:textColor="@color/ui_color_black"
+            app:layout_constraintBottom_toTopOf="@+id/btn_zb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/gcet_min"
+            app:layout_constraintTop_toBottomOf="@id/meterv_test" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@id/btn_zb"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="更改当前值"
+            app:layout_constraintTop_toBottomOf="@id/gcet_num"
+            tools:ignore="MissingConstraints" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,6 +1,6 @@
 package com.lskj.gx.lib_common.utils
 import android.content.SharedPreferences
-import androidx.preference.PreferenceManager.getDefaultSharedPreferences
+import android.preference.PreferenceManager.getDefaultSharedPreferences
 import com.lskj.gx.lib_common.config.AppContext
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty

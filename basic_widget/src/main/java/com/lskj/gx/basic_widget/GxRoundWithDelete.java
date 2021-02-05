@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.lskj.gx.basi_base.listener.BaseOnClickListener;
 import com.lskj.gx.basic_entity.BaseUserEntity;
+import com.lskj.gx.lib_common.base.listener.BaseOnClickListener;
 
 
 /**

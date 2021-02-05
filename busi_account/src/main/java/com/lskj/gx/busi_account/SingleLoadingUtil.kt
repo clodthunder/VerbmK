@@ -9,7 +9,6 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
-import com.lskj.gx.lib_common.R
 import com.lskj.gx.lib_common.utils.ScreenUtil
 
 

@@ -1,14 +1,15 @@
 package com.lskj.gx.busi_account.repository
 
 import android.util.Log
-import com.lskj.gx.basi_base.net.BaseResponse
 import com.lskj.gx.busi_account.api.IUserApi
 import com.lskj.gx.busi_account.bean.dto.HeaderImgDto
 import com.lskj.gx.busi_account.bean.dto.PermissionDto
 import com.lskj.gx.busi_account.bean.dto.RoleDto
 import com.lskj.gx.busi_account.bean.dto.UserDto
-import com.lskj.gx.busi_account.error.GlobalExceptionHandler
+import com.lskj.gx.lib_common.base.net.BaseResponse
 import com.lskj.gx.lib_common.config.ApiConstant
+import com.lskj.gx.lib_common.error.ErrorCode
+import com.lskj.gx.lib_common.error.GlobalExceptionHandler
 import com.lskj.gx.lib_common.utils.SpUtil
 import kotlinx.coroutines.CoroutineDispatcher
 import okhttp3.Interceptor
@@ -48,17 +49,18 @@ class UserDataSource(private val ioDispatcher: CoroutineDispatcher) : IUserSourc
             .client(okClient)
             .build()
         val userApi: IUserApi = retrofit.create(IUserApi::class.java)
-        return try {
+        try {
             val baseRes: BaseResponse<UserDto> = userApi.getUserInfo()
             if (baseRes.code == 200) {
-                Log.e(TAG, "调用 getUserInfo 完成")
-                baseRes.data
+                return baseRes.data
             } else {
-                Log.e(TAG, "调用 getUserInfo 完成")
-                null
+                GlobalExceptionHandler.instances
+                    .handleCustomerError(baseRes.code?.let { ErrorCode.getByCode(it) })
             }
+            Log.e(TAG, "调用 getUserInfo 完成")
+            return null
         } catch (e: Exception) {
-            GlobalExceptionHandler.instances.handleException(e)
+            GlobalExceptionHandler.instances.handleSystemException(e)
             return null
         }
     }
@@ -96,7 +98,7 @@ class UserDataSource(private val ioDispatcher: CoroutineDispatcher) : IUserSourc
                 null
             }
         } catch (e: Exception) {
-            GlobalExceptionHandler.instances.handleException(e)
+            GlobalExceptionHandler.instances.handleSystemException(e)
             return null
         }
     }
@@ -132,7 +134,7 @@ class UserDataSource(private val ioDispatcher: CoroutineDispatcher) : IUserSourc
                 null
             }
         } catch (e: Exception) {
-            GlobalExceptionHandler.instances.handleException(e)
+            GlobalExceptionHandler.instances.handleSystemException(e)
             return null
         }
     }
@@ -165,7 +167,7 @@ class UserDataSource(private val ioDispatcher: CoroutineDispatcher) : IUserSourc
                 null
             }
         } catch (e: Exception) {
-            GlobalExceptionHandler.instances.handleException(e)
+            GlobalExceptionHandler.instances.handleSystemException(e)
             return null
         }
     }

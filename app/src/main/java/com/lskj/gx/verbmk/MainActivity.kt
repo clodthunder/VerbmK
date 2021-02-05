@@ -7,7 +7,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.lskj.gx.basi_base.activity.BaseActivity
+import com.lskj.gx.lib_common.base.activity.BaseActivity
 import com.lskj.gx.lib_common.config.AroutConfig
 import com.lskj.gx.verbmk.databinding.ActivityMainBinding
 import com.lskj.gx.verbmk.entity.User
@@ -59,6 +59,10 @@ MainActivity : BaseActivity() {
         bding.btnChangePic.setOnClickListener {
             user.userPicUrl =
                 "https://timgsa.baidu.com/timg?iasssmage&quality=80&size=b9999_10000&sec=1605276319950&di=6f1a12cecbdfcb39b038128decb61569&imgtype=0&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201303%2F16%2F173710lvx470i4348z6i6z123.jpg"
+        }
+        //点击仪表盘
+        bding.btnInvokeYbp.setOnClickListener {
+            ARouter.getInstance().build(AroutConfig.A_APP_YBP).navigation()
         }
         bding.btnInvokeLogin.setOnClickListener {
             ARouter.getInstance().build(AroutConfig.A_ACCOUNT_LOGIN).navigation()

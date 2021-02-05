@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 仪表盘自定义属性 -->
+    <attr name="color_dial_lower" format="color" />
+    <attr name="color_dial_middle" format="color" />
+    <attr name="color_dial_high" format="color" />
+    <attr name="text_size_dial" format="dimension" />
+    <attr name="stroke_width_dial" format="dimension" />
+    <attr name="radius_circle_dial" format="dimension" />
+    <attr name="text_title_dial" format="string" />
+    <attr name="text_title_size" format="dimension" />
+    <attr name="text_title_color" format="color" />
+    <attr name="text_size_value" format="dimension" />
+    <attr name="animator_play_time" format="integer" />
+    <attr name="default_max_value" format="float" />
+    <attr name="default_min_value" format="float" />
+
+    <declare-styleable name="MeterView">
+        <attr name="default_max_value" />
+        <attr name="default_min_value" />
+        <attr name="color_dial_lower" />
+        <attr name="color_dial_middle" />
+        <attr name="color_dial_high" />
+        <attr name="text_size_dial" />
+        <attr name="stroke_width_dial" />
+        <attr name="radius_circle_dial" />
+        <attr name="text_title_dial" />
+        <attr name="text_title_size" />
+        <attr name="text_title_color" />
+        <attr name="text_size_value" />
+        <attr name="animator_play_time" />
+    </declare-styleable>
+</resources>

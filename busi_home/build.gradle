@@ -131,5 +131,4 @@ dependencies {
     implementation project(':lib_common')
     implementation project(':basic_helper')
     implementation project(':basic_ui')
-    implementation project(':basi_base')
 }

@@ -18,8 +18,6 @@ import com.lskj.gx.lib_common.config.AppContext
  *   功能描述:
  */
 class GlideUtil {
-
-
     companion object {
         val TAG: String = "GlideUtil"
         val instance: GlideUtil by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {

@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 import androidx.annotation.ColorInt;
 
-import com.lskj.gx.basi_base.listener.BaseOnClickListener;
 import com.lskj.gx.basic_entity.BaseImageEntity;
+import com.lskj.gx.lib_common.base.listener.BaseOnClickListener;
 
 import java.util.ArrayList;
 import java.util.UUID;

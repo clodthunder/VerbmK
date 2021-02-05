@@ -1,10 +1,10 @@
 package com.lskj.gx.busi_account.api
 
-import com.lskj.gx.basi_base.net.BaseResponse
 import com.lskj.gx.busi_account.bean.dto.HeaderImgDto
 import com.lskj.gx.busi_account.bean.dto.PermissionDto
 import com.lskj.gx.busi_account.bean.dto.RoleDto
 import com.lskj.gx.busi_account.bean.dto.UserDto
+import com.lskj.gx.lib_common.base.net.BaseResponse
 import retrofit2.http.GET
 
 /**

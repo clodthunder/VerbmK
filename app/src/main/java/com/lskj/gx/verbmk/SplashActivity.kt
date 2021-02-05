@@ -6,7 +6,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.gyf.immersionbar.ktx.hideStatusBar
 import com.gyf.immersionbar.ktx.immersionBar
-import com.lskj.gx.basi_base.activity.BaseActivity
+import com.lskj.gx.lib_common.base.activity.BaseActivity
 import com.lskj.gx.lib_common.config.AroutConfig
 import com.lskj.gx.verbmk.databinding.ActivitySplashBinding
 import io.reactivex.Observable
@@ -53,6 +53,7 @@ class SplashActivity : BaseActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { //跳转
                 ARouter.getInstance().build(AroutConfig.A_APP_MAIN).navigation()
+//                ARouter.getInstance().build(AroutConfig.A_ACCOUNT_LOGIN).navigation()
                 finish()
             }
     }
