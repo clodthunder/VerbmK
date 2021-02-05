@@ -68,6 +68,10 @@
             android:name=".YbpActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
-
+        <!--        音频录制与播放-->
+        <activity
+            android:name=".AudioActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>

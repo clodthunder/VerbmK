@@ -64,9 +64,15 @@ MainActivity : BaseActivity() {
         bding.btnInvokeYbp.setOnClickListener {
             ARouter.getInstance().build(AroutConfig.A_APP_YBP).navigation()
         }
+        //点击音频录制与播放页面
+        bding.btnInvokeAudio.setOnClickListener {
+            ARouter.getInstance().build(AroutConfig.A_APP_AUDIO).navigation()
+        }
+        //点击登录页面
         bding.btnInvokeLogin.setOnClickListener {
             ARouter.getInstance().build(AroutConfig.A_ACCOUNT_LOGIN).navigation()
         }
+        //测试livedata mvvm
         bding.btnInvokeLiveDataTest.setOnClickListener {
             ARouter.getInstance().build(AroutConfig.A_APP_LIVE_DATA_TEST).navigation()
         }

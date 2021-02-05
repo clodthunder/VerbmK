@@ -324,7 +324,7 @@ public class MeterView extends View {
         } else if (min >= 0 && max >= 0) {
             this.peri80 = (float) ((max - min) * 0.8) + min;
         } else if (min < 0 && max > 0) {
-            this.peri80 = (float) ((max - min) * 0.8) - max;
+            this.peri80 = (float) ((max - min) * 0.8) - Math.abs(min);
         }
         drawDync();
         setCurrentValue(curValue);

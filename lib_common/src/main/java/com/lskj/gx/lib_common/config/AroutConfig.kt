@@ -15,6 +15,7 @@ class AroutConfig {
         const val A_APP_SPLASH: String = "/app/splash_activity"
         const val A_APP_MAIN: String = "/app/main_activity"
         const val A_APP_YBP: String = "/app/ybp_activity"
+        const val A_APP_AUDIO: String = "/app/audio_activity"
 
         // 测试livedata com.lskj.gx.verbmk.test
         const val A_APP_LIVE_DATA_TEST: String = "/app/live_data_test"
