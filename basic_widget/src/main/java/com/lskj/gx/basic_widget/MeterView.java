@@ -161,13 +161,6 @@ public class MeterView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         this.canvas = canvas;
-        drawDync();
-    }
-
-    private void drawDync() {
-        if (canvas == null) {
-            return;
-        }
         drawArc(canvas);
         drawPointerLine(canvas);
         drawTitleDial(canvas);
@@ -326,7 +319,6 @@ public class MeterView extends View {
         } else if (min < 0 && max > 0) {
             this.peri80 = (float) ((max - min) * 0.8) - Math.abs(min);
         }
-        drawDync();
         setCurrentValue(curValue);
     }
 
