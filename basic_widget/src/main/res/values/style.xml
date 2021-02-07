@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--音频频谱控件-->
+    <declare-styleable name="AudioSpectruView">
+        <attr name="RectangularBarWidth" format="dimension|reference" />
+        <attr name="RectangularBarSpace" format="dimension|reference" />
+        <attr name="RectangularBarColor" format="color" />
+        <attr name="RectangularBarRadius" format="dimension|reference" />
+        <attr name="RectangularBarMinHeight" format="dimension|reference" />
+    </declare-styleable>
+</resources>

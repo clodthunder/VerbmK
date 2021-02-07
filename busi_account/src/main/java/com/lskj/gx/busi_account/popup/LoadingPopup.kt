@@ -10,8 +10,6 @@ import com.lxj.xpopup.core.CenterPopupView
 
 /**
  *   创建时间:  2021/1/18
- *   编写人: tzw
- *   功能描述:
  */
 @SuppressLint("InflateParams")
 class LoadingPopup(context: Context) : CenterPopupView(context) {

@@ -71,4 +71,5 @@
         <!-- Required for pre-Lollipop. -->
         <item name="overlapAnchor">false</item>
     </style>
+
 </resources>
