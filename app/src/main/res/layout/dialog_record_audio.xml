@@ -18,6 +18,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/tv_title"
             app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0" />
@@ -31,7 +32,7 @@
             android:text="标题"
             android:textColor="@color/app_black"
             android:textSize="@dimen/ui_font_14"
-            app:layout_constraintBottom_toBottomOf="@+id/spectrum_view"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_audio_big"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toEndOf="@id/iv_audio"
@@ -39,22 +40,20 @@
             app:layout_constraintVertical_bias="0"
             app:layout_constraintVertical_chainStyle="spread" />
 
-        <com.lskj.gx.basic_widget.SpectrumView
-            android:id="@id/spectrum_view"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@id/iv_audio_big"
             android:layout_width="100dp"
             android:layout_height="45dp"
+            android:layout_marginTop="@dimen/ui_space_10"
             android:background="@android:color/transparent"
             android:padding="5dp"
-            app:RectangularBarColor="@color/ui_color_activated"
-            app:RectangularBarMinHeight="5dp"
-            app:RectangularBarSpace="3dp"
-            app:RectangularBarWidth="2dp"
+            android:src="@drawable/record_audio"
             app:layout_constraintBottom_toTopOf="@+id/tsb_progress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_title">
+            app:layout_constraintTop_toBottomOf="@id/iv_audio">
 
-        </com.lskj.gx.basic_widget.SpectrumView>
+        </androidx.appcompat.widget.AppCompatImageView>
 
         <!-- 进度条 -->
         <com.lskj.gx.basic_widget.TextSeekBar
@@ -71,7 +70,7 @@
             app:layout_constraintBottom_toTopOf="@+id/btn_start_record"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/spectrum_view" />
+            app:layout_constraintTop_toBottomOf="@id/iv_audio_big" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@id/btn_start_record"

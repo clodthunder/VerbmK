@@ -59,6 +59,7 @@ class PreViewAudioDialog : DialogFragment() {
     companion object {
         private var instance: PreViewAudioDialog? = null
         const val EXTR_TITLE: String = "extra_title"
+        const val EXTR_MAX_LONG: String = "extra_max_long"
         const val DELAY_MILLIS = 1000
 
         //audio 播放源
@@ -152,7 +153,6 @@ class PreViewAudioDialog : DialogFragment() {
                 }
             }
         })
-
         //mediaPlay 设置音频源
         mRunnable = Runnable {
             if (mMediaPlayer!!.currentPosition > mMediaPlayer!!.duration) {
@@ -223,6 +223,9 @@ class PreViewAudioDialog : DialogFragment() {
                     it?.text = title.toString()
                 }
             }
+            //初始化 最大进度
+            val realMax = bundle.getInt(EXTR_MAX_LONG)
+            seekBar?.max = realMax
         }
     }
 
@@ -350,12 +353,14 @@ class PreViewAudioDialog : DialogFragment() {
     }
 
     //更新数据
-    fun updateArguments(url: String, isNet: Boolean) {
+    fun updateArguments(url: String, realMax: Int, isNet: Boolean) {
         val args = arguments
         args?.putString(EXTR_URL, url)
         args?.putBoolean(EXTR_ISNET_SOURCE, isNet)
+        args?.putInt(EXTR_MAX_LONG, realMax)
         arguments = args
 
+        seekBar?.max = realMax
         isPlaying = false
         //先停止
         stopPreView()

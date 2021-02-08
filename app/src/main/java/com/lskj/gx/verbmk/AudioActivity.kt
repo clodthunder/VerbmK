@@ -44,6 +44,9 @@ class AudioActivity : BaseActivity() {
         bding.btnStartAudio.setOnClickListener {
             startAudioRecord()
         }
+        bding.btnMicLevel.setOnClickListener {
+            toast("配合音频录制")
+        }
     }
 
     /**
@@ -65,8 +68,8 @@ class AudioActivity : BaseActivity() {
                 toast("cancle click")
             }
 
-            override fun onConfimBtnClick(audioFile: File) {
-                startPreViewAudio(audioFile)
+            override fun onConfimBtnClick(audioFile: File, realMax: Int) {
+                startPreViewAudio(audioFile, realMax)
             }
 
             override fun onSpectrumUpdate() {
@@ -86,9 +89,10 @@ class AudioActivity : BaseActivity() {
         recordDialog?.dismiss()
     }
 
-    private fun startPreViewAudio(audioFile: File) {
+    private fun startPreViewAudio(audioFile: File, realMax: Int) {
         val args = Bundle()
         args.putString(PreViewAudioDialog.EXTR_TITLE, "音频预览...")
+        args.putInt(PreViewAudioDialog.EXTR_MAX_LONG, realMax)
         if (audioFile.exists()) {
             args.putBoolean(PreViewAudioDialog.EXTR_ISNET_SOURCE, false)
             args.putString(PreViewAudioDialog.EXTR_URL, audioFile.absolutePath)
@@ -100,7 +104,7 @@ class AudioActivity : BaseActivity() {
             args.putBoolean(PreViewAudioDialog.EXTR_ISNET_SOURCE, true)
         }
         preViewAudioDialog?.let {
-            preViewAudioDialog?.updateArguments(audioFile.absolutePath, false)
+            preViewAudioDialog?.updateArguments(audioFile.absolutePath, realMax, false)
         } ?: let {
             preViewAudioDialog = PreViewAudioDialog.getInstance(args)
         }
