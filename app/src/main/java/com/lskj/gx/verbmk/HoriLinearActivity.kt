@@ -86,6 +86,7 @@ class HoriLinearActivity : BaseActivity() {
 
         //要自己实现 点击、删除、新增
         bding.hllTest.setImages(images)
+        //只有需要自己显示才用调用这个 否则不需要
         bding.hllTest.setOnHorIvDelClickListener { position, entity, iv ->
             toast("删除 $position-> ${entity.toString()}")
             //自己调用删除

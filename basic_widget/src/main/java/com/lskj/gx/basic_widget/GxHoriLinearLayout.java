@@ -31,8 +31,11 @@ public class GxHoriLinearLayout extends HorizontalScrollView {
     private Context mContext;
     private LinearLayout llContainer;
     //显示image  entity array
+
+    //这里需要保证enities 和 gxImageViews下标一致
     private ArrayList<BaseImageEntity> entities;
     private ArrayList<GxRoundDelImageView> gxImgViews;
+
     //item realImage height
     private int realHeight;
     //item realImage width
@@ -220,14 +223,14 @@ public class GxHoriLinearLayout extends HorizontalScrollView {
             int finalI = i;
             //删除事件
             if (onHorIvDelClickListener != null) {
-                temp.setDelListener((delImg, entity) -> onHorIvDelClickListener.OnHorIvDelClick(finalI, cEntity, temp));
+                temp.setDelListener((delImg, entity) -> onHorIvDelClickListener.OnHorIvDelClick(getRealIndex(temp), cEntity, temp));
             }
             //点击事件
             if (onHorIvClickListener != null)
                 temp.setRealListener((realImg, imageEntity) -> {
                     if (!ADD_FLAG.equals(cEntity.getId())) {
                         if (onHorIvClickListener != null) {
-                            onHorIvClickListener.OnHorIvClick(finalI, cEntity, temp);
+                            onHorIvClickListener.OnHorIvClick(getRealIndex(temp), cEntity, temp);
                         }
                     }
                 });
@@ -381,13 +384,22 @@ public class GxHoriLinearLayout extends HorizontalScrollView {
         this.onHorIvClickListener = click;
         for (int i = 0; i < gxImgViews.size(); i++) {
             GxRoundDelImageView temp = gxImgViews.get(i);
-            int finalI = i;
             temp.setRealListener((realImg, imageEntity) -> {
                 if (!ADD_FLAG.equals(imageEntity.getPid())) {
-                    onHorIvClickListener.OnHorIvClick(finalI, temp.getImgEntity(), temp);
+                    onHorIvClickListener.OnHorIvClick(getRealIndex(temp), temp.getImgEntity(), temp);
                 }
             });
         }
+    }
+
+    private int getRealIndex(GxRoundDelImageView temp) {
+        for (int j = 0; j < entities.size(); j++) {
+            BaseImageEntity jen = entities.get(j);
+            if (jen.getId().equals(temp.getImgEntity().getId())) {
+                return j;
+            }
+        }
+        return -1;
     }
 
     //自定义 处理删除事件
@@ -395,10 +407,9 @@ public class GxHoriLinearLayout extends HorizontalScrollView {
         this.onHorIvDelClickListener = onHorIvDelClickListener;
         for (int i = 0; i < gxImgViews.size(); i++) {
             GxRoundDelImageView temp = gxImgViews.get(i);
-            int finalI = i;
             temp.setDelListener((realImg, imageEntity) -> {
                 if (!ADD_FLAG.equals(imageEntity.getPid())) {
-                    onHorIvDelClickListener.OnHorIvDelClick(finalI, temp.getImgEntity(), temp);
+                    onHorIvDelClickListener.OnHorIvDelClick(getRealIndex(temp), temp.getImgEntity(), temp);
                 }
             });
         }
