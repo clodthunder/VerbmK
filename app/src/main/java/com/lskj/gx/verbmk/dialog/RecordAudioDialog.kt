@@ -35,6 +35,7 @@ import kotlin.math.log10
 /**
  *   创建时间:  2021/2/7
  *   录制音频
+ *   待优化项： 时间限制 、压缩方式优化 文件大小
  */
 class RecordAudioDialog : DialogFragment() {
     private var listener: OnRecordAudioBtnClick? = null

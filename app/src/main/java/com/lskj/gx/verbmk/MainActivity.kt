@@ -76,6 +76,10 @@ MainActivity : BaseActivity() {
         bding.btnInvokeLiveDataTest.setOnClickListener {
             ARouter.getInstance().build(AroutConfig.A_APP_LIVE_DATA_TEST).navigation()
         }
+        //调用横向imageViewlist
+        bding.btnInvokeHoriImg.setOnClickListener {
+            ARouter.getInstance().build(AroutConfig.A_APP_HORI_LINEAR).navigation()
+        }
         val errorImg: Drawable = resources.getDrawable(R.drawable.default_pic_error_small)
         bding.errorDraw = errorImg
         val holder: Drawable = resources.getDrawable(R.drawable.default_pic_placeholder_small)

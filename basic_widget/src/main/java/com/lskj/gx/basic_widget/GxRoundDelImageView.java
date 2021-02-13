@@ -8,36 +8,19 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.lskj.gx.basic_entity.BaseUserEntity;
+import com.lskj.gx.basic_entity.BaseImageEntity;
 import com.lskj.gx.lib_common.base.listener.BaseOnClickListener;
 
 
 /**
  * 创建时间:  2020/9/3
  * 编写人: tzw
- * 功能描述:
- * gxRoundWithDelete.setRaduis(20, 20, 10, 10);
- * //设置imageView entity
- * gxRoundWithDelete.setImgEntity(
- * new BaseUserEntity(UUID.randomUUID().toString(), null, String.valueOf(R.drawable.temp)));
- * gxRoundWithDelete.setGxRivdListener(new GxRoundWithDelete.OnRealImageClick() {
- *
- * @Override public void onRealImgClick(GxRoundImgView realImg, BaseUserEntity entity) {
- * //设置
- * GxGlide.loadFitCenter(ImageDelete.this, R.drawable.test_ui_temp2, gxRoundWithDelete.getRealImage());
- * Toast.makeText(ImageDelete.this, entity == null ? "请设置 entity" : entity.toString(), Toast.LENGTH_SHORT).show();
- * }
- * @Override public void onDelImgClick(GxRoundImgView delImg) {
- * Toast.makeText(ImageDelete.this, "delete 触发", Toast.LENGTH_SHORT).show();
- * }
- * });
- * GxGlide.load(this, R.drawable.test_ui_temp2, gxRoundWithDelete.getRealImage());
+ * 功能描述: 包含删除 点击 事件
  */
-public class GxRoundWithDelete extends RelativeLayout {
+public class GxRoundDelImageView extends RelativeLayout {
     private Context mContext;
     //image 实体类
-    private BaseUserEntity imgEntity;
-
+    private BaseImageEntity imgEntity;
     //真实图片
     private GxRoundImgView realImage;
     //删除图片
@@ -51,7 +34,13 @@ public class GxRoundWithDelete extends RelativeLayout {
     private int delHeight;
     private int delWidth;
 
+    //点击事件
     private OnRealImageClick realListener;
+    //删除事件
+    private OnDelImageClick delListener;
+
+    //自定义渲染图片方法
+    private onDrawRealImageListener drawRealImageListener;
 
     public GxRoundImgView getRealImage() {
         return realImage;
@@ -80,7 +69,7 @@ public class GxRoundWithDelete extends RelativeLayout {
         }
     }
 
-    public GxRoundWithDelete(Context context) {
+    public GxRoundDelImageView(Context context) {
         super(context);
         mContext = context;
         init(null);
@@ -91,13 +80,13 @@ public class GxRoundWithDelete extends RelativeLayout {
         return (int) (dpValue * scale + 0.5f);
     }
 
-    public GxRoundWithDelete(Context context, AttributeSet attrs) {
+    public GxRoundDelImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
         init(attrs);
     }
 
-    public GxRoundWithDelete(Context context, AttributeSet attrs, int defStyleAttr) {
+    public GxRoundDelImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext = context;
         init(attrs);
@@ -107,10 +96,10 @@ public class GxRoundWithDelete extends RelativeLayout {
         this.setClickable(false);
         this.setFocusable(false);
 
-        realHeight = dp2px(80);
-        realWidth = dp2px(80);
-        delHeight = dp2px(30);
-        delWidth = dp2px(30);
+        realHeight = dp2px(60);
+        realWidth = dp2px(60);
+        delHeight = dp2px(15);
+        delWidth = dp2px(15);
 
         @SuppressLint("CustomViewStyleable") TypedArray a =
                 mContext.obtainStyledAttributes(attrs, R.styleable.GxRoundImgView);
@@ -119,6 +108,12 @@ public class GxRoundWithDelete extends RelativeLayout {
         delHeight = a.getDimensionPixelSize(R.styleable.GxRoundWithDelete_del_height, delHeight);
         delWidth = a.getDimensionPixelSize(R.styleable.GxRoundWithDelete_del_width, delWidth);
         a.recycle();
+        if (imgEntity != null) {
+            drawImg();
+        }
+    }
+
+    private void drawImg() {
         //真实图片
         realImage = new GxRoundImgView(mContext);
         realImage.setClickable(true);
@@ -126,6 +121,9 @@ public class GxRoundWithDelete extends RelativeLayout {
         realImage.setId(R.id.round_with_delete_real_image);
         realImage.setScaleType(ImageView.ScaleType.FIT_XY);
         LayoutParams layoutParams = new LayoutParams(realWidth, realHeight);
+        if (drawRealImageListener != null) {
+            drawRealImageListener.onDrawRealImage(realImage);
+        }
         realImage.setLayoutParams(layoutParams);
         this.addView(realImage);
         //删除图片
@@ -136,8 +134,7 @@ public class GxRoundWithDelete extends RelativeLayout {
         LayoutParams delParams = new LayoutParams(delWidth, delHeight);
         delImage.setScaleType(ImageView.ScaleType.FIT_XY);
         delImage.setLayoutParams(delParams);
-        delImage.setImageDrawable(getResources().getDrawable(R.drawable.temp));
-
+        delImage.setImageDrawable(getResources().getDrawable(R.drawable.default_delete_icon));
         this.addView(delImage);
 
         LayoutParams delParentParams = (LayoutParams) delImage.getLayoutParams();
@@ -158,48 +155,64 @@ public class GxRoundWithDelete extends RelativeLayout {
         }
     }
 
-    public void setGxRivdListener(OnRealImageClick realListener) {
-        this.realListener = realListener;
-        if (realImage != null) {
-            realImage.setOnClickListener(new BaseOnClickListener() {
-                @Override
-                public void onMultiClick(View v) {
-                    realListener.onRealImgClick(realImage, imgEntity);
-                }
-            });
-        }
-        if (delImage != null) {
-            delImage.setOnClickListener(new BaseOnClickListener() {
-                @Override
-                public void onMultiClick(View v) {
-                    realListener.onDelImgClick(delImage);
-                }
-            });
-        }
-    }
-
     public void setScaleRealType(ImageView.ScaleType scaleType) {
         if (realImage != null) {
             realImage.setScaleType(scaleType);
         }
     }
 
-    public interface OnRealImageClick {
-        void onRealImgClick(GxRoundImgView realImg, BaseUserEntity imageEntity);
-
-        void onDelImgClick(GxRoundImgView delImg);
+    public interface onDrawRealImageListener {
+        void onDrawRealImage(GxRoundImgView gxImgView);
     }
 
-    public BaseUserEntity getImgEntity() {
+    public interface OnRealImageClick {
+        void onRealImgClick(GxRoundImgView realImg, BaseImageEntity imageEntity);
+    }
+
+    public interface OnDelImageClick {
+        void onDelImgClick(GxRoundImgView delImg, BaseImageEntity entity);
+    }
+
+    public BaseImageEntity getImgEntity() {
         return imgEntity;
     }
 
-    public void setImgEntity(BaseUserEntity imgEntity) {
+    public void setImgEntity(BaseImageEntity imgEntity, onDrawRealImageListener drawReal) {
         this.imgEntity = imgEntity;
+        this.drawRealImageListener = drawReal;
+        drawImg();
     }
 
     @Override
     public boolean isInEditMode() {
         return true;
+    }
+
+    public void setRealListener(OnRealImageClick realListener) {
+        this.realListener = realListener;
+        if (realImage != null) {
+            realImage.setOnClickListener(new BaseOnClickListener() {
+                @Override
+                public void onMultiClick(View v) {
+                    if (realListener != null) {
+                        realListener.onRealImgClick(realImage, imgEntity);
+                    }
+                }
+            });
+        }
+    }
+
+    public void setDelListener(OnDelImageClick delListener) {
+        this.delListener = delListener;
+        if (delImage != null) {
+            delImage.setOnClickListener(new BaseOnClickListener() {
+                @Override
+                public void onMultiClick(View v) {
+                    if (delListener != null) {
+                        delListener.onDelImgClick(delImage, imgEntity);
+                    }
+                }
+            });
+        }
     }
 }

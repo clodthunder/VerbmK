@@ -58,6 +58,8 @@ class SplashActivity : BaseActivity() {
 //                ARouter.getInstance().build(AroutConfig.A_ACCOUNT_LOGIN).navigation()
 //                音频录制与播放
 //                ARouter.getInstance().build(AroutConfig.A_APP_AUDIO).navigation()
+//                横向imagelist
+//                ARouter.getInstance().build(AroutConfig.A_APP_HORI_LINEAR).navigation()
                 finish()
             }
     }

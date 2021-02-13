@@ -108,6 +108,7 @@ dependencies {
     implementation rootProject.depsLibs.appcompact
     implementation rootProject.depsLibs.design
     implementation project(path: ':library')
+    implementation project(path: ':basic_entity')
     testImplementation rootProject.testLibs.junit
     androidTestImplementation rootProject.testLibs.ext_junit
     testImplementation rootProject.testLibs.espresso

@@ -87,5 +87,10 @@
             android:name=".AudioActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <!--        测试横向音频、视频、图片、文件控件-->
+        <activity
+            android:name=".HoriLinearActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>

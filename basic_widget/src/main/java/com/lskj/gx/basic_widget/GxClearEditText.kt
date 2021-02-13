@@ -16,8 +16,6 @@ import androidx.core.graphics.drawable.DrawableCompat
 
 /**
  * 创建时间:  2020/11/20
- * 编写人: tzw
- * 功能描述:
  */
 class GxClearEditText : AppCompatEditText, OnTouchListener, OnFocusChangeListener, TextWatcher {
     private var mClearTextIcon: Drawable? = null

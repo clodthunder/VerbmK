@@ -187,9 +187,24 @@
             android:layout_marginTop="@dimen/ui_space_10"
             android:text="音频录制与播放"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_invoke_hori_img"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_invoke_login"
+            app:layout_constraintVertical_bias="0" />
+
+        <Button
+            android:id="@id/btn_invoke_hori_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/ui_space_10"
+            android:layout_marginTop="@dimen/ui_space_10"
+            android:text="横向imageList"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_invoke_audio"
             app:layout_constraintTop_toBottomOf="@id/btn_invoke_login"
             app:layout_constraintVertical_bias="0" />
 
