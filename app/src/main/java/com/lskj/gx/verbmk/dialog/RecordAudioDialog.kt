@@ -23,6 +23,7 @@ import com.hjq.permissions.XXPermissions.startPermissionActivity
 import com.lskj.gx.basic_helper.ScreenHelper
 import com.lskj.gx.basic_widget.TextSeekBar
 import com.lskj.gx.verbmk.R
+import org.jetbrains.anko.support.v4.runOnUiThread
 import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.windowManager
 import java.io.File
@@ -34,9 +35,6 @@ import kotlin.math.log10
 /**
  *   创建时间:  2021/2/7
  *   录制音频
- *     spectrumView?.post {
- *        spectrumView?.setWaveData(fft)
- *     }
  */
 class RecordAudioDialog : DialogFragment() {
     private var listener: OnRecordAudioBtnClick? = null
@@ -52,6 +50,12 @@ class RecordAudioDialog : DialogFragment() {
     private var timerTask: TimerTask? = null
     private var timer: Timer? = null
     private lateinit var mContext: Context
+
+    //默认显示的title
+    private val defaultTitle: String = "录制音频..."
+
+    //实际显示的title
+    private var currentTitle: String = defaultTitle;
 
     //最大录制时间 60 秒
     private var maxDuration: Int = 60 * 1000
@@ -221,10 +225,11 @@ class RecordAudioDialog : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         val bundle = arguments
         if (bundle != null) {
-            val title = bundle.get(EXTR_TITLE)
+            val title = bundle.getString(EXTR_TITLE)
             if (title != null && !TextUtils.isEmpty(title.toString())) {
+                currentTitle = title.toString()
                 tvTitle.let {
-                    it?.text = title.toString()
+                    it?.text = currentTitle
                 }
             }
             val maxDura: Int = bundle.getInt(EXTR_MAX_DURATION)
@@ -263,6 +268,7 @@ class RecordAudioDialog : DialogFragment() {
      * 开始录制
      */
     private fun startRecord() {
+        tvTitle?.text = "正在录制音频..."
         initMediaRecord()
         mMediaRecorder?.start()
         //mic 启用
@@ -342,22 +348,24 @@ class RecordAudioDialog : DialogFragment() {
                 var audioVoice: Drawable? = null
                 when {
                     volume <= 0 -> {
-                        audioVoice = mContext.getDrawable(R.drawable.audio_voice_zearo)
+                        audioVoice = mContext.getDrawable(R.mipmap.audio_voice_zearo)
                     }
                     volume <= 30 -> {
-                        audioVoice = mContext.getDrawable(R.drawable.audio_voice_30)
+                        audioVoice = mContext.getDrawable(R.mipmap.audio_voice_30)
+                    }
+                    volume <= 50 -> {
+                        audioVoice = mContext.getDrawable(R.mipmap.audio_voice_50)
                     }
                     volume <= 70 -> {
-                        audioVoice = mContext.getDrawable(R.drawable.audio_voice_70)
-                    }
-                    volume <= 90 -> {
-                        audioVoice = mContext.getDrawable(R.drawable.audio_voice_90)
+                        audioVoice = mContext.getDrawable(R.mipmap.audio_voice_70)
                     }
                     else -> {
-                        audioVoice = mContext.getDrawable(R.drawable.audio_voice_full)
+                        audioVoice = mContext.getDrawable(R.mipmap.audio_voice_full)
                     }
                 }
-                ivAudioBig?.setImageDrawable(audioVoice)
+                runOnUiThread {
+                    ivAudioBig?.setImageDrawable(audioVoice)
+                }
                 synchronized(RecordAudioDialog::javaClass) {
                     try {
                         Thread.sleep(100) // 一秒十次
@@ -376,6 +384,7 @@ class RecordAudioDialog : DialogFragment() {
      * 停止录制
      */
     private fun stopRecord() {
+        tvTitle?.text = defaultTitle
         //mic 禁用启用
         isGetVoiceRun = false
         //定时器

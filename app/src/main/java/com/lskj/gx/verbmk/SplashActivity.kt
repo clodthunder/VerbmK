@@ -52,9 +52,12 @@ class SplashActivity : BaseActivity() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { //跳转
-//                ARouter.getInstance().build(AroutConfig.A_APP_MAIN).navigation()
+//                主界面
+                ARouter.getInstance().build(AroutConfig.A_APP_MAIN).navigation()
+//                登录界面
 //                ARouter.getInstance().build(AroutConfig.A_ACCOUNT_LOGIN).navigation()
-                ARouter.getInstance().build(AroutConfig.A_APP_AUDIO).navigation()
+//                音频录制与播放
+//                ARouter.getInstance().build(AroutConfig.A_APP_AUDIO).navigation()
                 finish()
             }
     }

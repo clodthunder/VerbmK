@@ -55,7 +55,7 @@ class AudioActivity : BaseActivity() {
     private fun startAudioRecord() {
         val args = Bundle()
         args.putBoolean(RecordAudioDialog.EXTR_AUTO_START, true)
-        args.putString(RecordAudioDialog.EXTR_TITLE, "正在录制音频...")
+        args.putString(RecordAudioDialog.EXTR_TITLE, "录制音频...")
 
         recordDialog?.let {
             recordDialog?.updateArgs(false)
