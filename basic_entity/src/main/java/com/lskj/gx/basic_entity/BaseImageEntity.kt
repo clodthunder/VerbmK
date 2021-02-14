@@ -11,5 +11,5 @@ import java.io.Serializable
  *   suffix 后缀用于判断图片类型
  *   功能描述:基础图片对象封装
  */
-data class BaseImageEntity(var id: String, var pid: String, var url: String, var suffix: String) :
+data class BaseImageEntity(var id: String, var pid: String, var url: Any, var suffix: String) :
     Serializable

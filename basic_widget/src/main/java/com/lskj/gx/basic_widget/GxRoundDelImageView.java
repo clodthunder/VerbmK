@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.bumptech.glide.Glide;
 import com.lskj.gx.basic_entity.BaseImageEntity;
 import com.lskj.gx.lib_common.base.listener.BaseOnClickListener;
 
@@ -122,7 +123,10 @@ public class GxRoundDelImageView extends RelativeLayout {
         realImage.setScaleType(ImageView.ScaleType.FIT_XY);
         LayoutParams layoutParams = new LayoutParams(realWidth, realHeight);
         if (drawRealImageListener != null) {
-            drawRealImageListener.onDrawRealImage(realImage);
+            drawRealImageListener.onDrawRealImage(realImage, imgEntity);
+        }else{
+            //默认处理
+            Glide.with(mContext).load(imgEntity.getUrl()).into(realImage);
         }
         realImage.setLayoutParams(layoutParams);
         this.addView(realImage);
@@ -162,7 +166,7 @@ public class GxRoundDelImageView extends RelativeLayout {
     }
 
     public interface onDrawRealImageListener {
-        void onDrawRealImage(GxRoundImgView gxImgView);
+        void onDrawRealImage(GxRoundImgView gxImgView, BaseImageEntity entity);
     }
 
     public interface OnRealImageClick {

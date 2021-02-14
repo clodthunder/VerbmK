@@ -9,7 +9,6 @@ import com.lskj.gx.lib_common.base.activity.BaseActivity
 import com.lskj.gx.lib_common.config.AroutConfig
 import com.lskj.gx.verbmk.databinding.ActivityHoriLinearBinding
 import org.jetbrains.anko.toast
-import java.lang.String
 import java.util.*
 
 /**
@@ -40,42 +39,43 @@ class HoriLinearActivity : BaseActivity() {
         bding.hllTest.setBackGround(Color.BLUE)
 
         //实例化4张图片 用于测试
-        val temp = BaseImageEntity(
+        var temp = BaseImageEntity(
             UUID.randomUUID().toString(),
             "pid1",
-            String.valueOf(R.drawable.temp),
+            "https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo_2x.jpg",
             "jpg"
         )
         val temp2 = BaseImageEntity(
             UUID.randomUUID().toString(),
             "pid2",
-            String.valueOf(R.drawable.temp2),
-            "jpg"
+            "https://pic4.zhimg.com/80/v2-ca9f77f6487ae1b0d58322ad7897f3fb_1440w.png",
+            "png"
         )
         val temp3 = BaseImageEntity(
             UUID.randomUUID().toString(),
             "pid3",
-            String.valueOf(R.drawable.temp3),
+            R.drawable.temp3,
             "jpeg"
         )
         val temp4 = BaseImageEntity(
             UUID.randomUUID().toString(),
             "pid4",
-            String.valueOf(R.drawable.temp4),
+            R.drawable.temp4,
             "jpeg"
         )
         val temp5 = BaseImageEntity(
             UUID.randomUUID().toString(),
             "pid5",
-            String.valueOf(R.drawable.temp),
+            R.drawable.temp,
             "jpg"
         )
         val temp6 = BaseImageEntity(
             UUID.randomUUID().toString(),
             "pid6",
-            String.valueOf(R.drawable.temp4),
+            R.drawable.temp4,
             "jpeg"
         )
+
         //实例化4张图片 用于测试
         images.add(temp)
         images.add(temp2)
@@ -102,7 +102,7 @@ class HoriLinearActivity : BaseActivity() {
             val temp7 = BaseImageEntity(
                 UUID.randomUUID().toString(),
                 "add-pid6",
-                String.valueOf(R.drawable.temp4),
+                R.drawable.temp4,
                 "jpeg"
             )
             bding.hllTest.addEntity(temp7);
@@ -115,6 +115,12 @@ class HoriLinearActivity : BaseActivity() {
         }
         bding.btnReset.setOnClickListener {
             bding.hllTest.setImages(images)
+        }
+        bding.btnUpdate.setOnClickListener {
+            temp.url = "https://static.runoob.com/images/demo/demo2.jpg"
+            temp.pid = "pid_update"
+            temp.suffix = "jpg"
+            bding.hllTest.updateEntity(temp)
         }
     }
 }

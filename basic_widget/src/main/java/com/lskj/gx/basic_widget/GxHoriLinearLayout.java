@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.ColorInt;
 
+import com.bumptech.glide.Glide;
 import com.lskj.gx.basic_entity.BaseImageEntity;
 
 import org.jetbrains.annotations.NotNull;
@@ -23,9 +24,10 @@ import java.util.UUID;
  * 创建时间:  2020/9/3
  * 编写人: tzw
  * 功能描述: 封装横向 imageView list
- * 支持显示  隐藏 del imageView
- * 支持显示、隐藏 添加按钮
  * 2种模式：1 编辑模式 2 查看模式
+ * 支持自定义渲染图片
+ * 支持自定义事件处理
+ * 支持动态更新某条记录
  */
 public class GxHoriLinearLayout extends HorizontalScrollView {
     private Context mContext;
@@ -58,6 +60,21 @@ public class GxHoriLinearLayout extends HorizontalScrollView {
     private OnHorIvClickListener onHorIvClickListener;
     private OnHorIvDelClickListener onHorIvDelClickListener;
     private OnHorIvAddClickListener onHorIvAddClickListener;
+
+    //自定义图片渲染
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private GxRoundDelImageView.onDrawRealImageListener onDrawRealImageListener =
+            (gxImgView, entity) -> {
+                //特殊处理addBtn
+                if (ADD_FLAG.equals(entity.getPid())) {
+                    Glide.with(mContext).load(entity.getUrl()).into(gxImgView);
+//                    gxImgView.setImageDrawable(getResources().getDrawable(Integer.parseInt(entity.getUrl())));
+                } else {
+                    Glide.with(mContext).load(entity.getUrl()).into(gxImgView);
+//                    //正常view  处理显示本地图片 和处理网络图片
+//                    gxImgView.setImageDrawable(getResources().getDrawable(Integer.parseInt(entity.getUrl())));
+                }
+            };
 
     public GxHoriLinearLayout(Context context) {
         super(context);
@@ -93,7 +110,7 @@ public class GxHoriLinearLayout extends HorizontalScrollView {
 
         entities = new ArrayList<>();
         gxImgViews = new ArrayList<>();
-        addBtn = new BaseImageEntity(UUID.randomUUID().toString(), ADD_FLAG, String.valueOf(R.drawable.add_photo), "png");
+        addBtn = new BaseImageEntity(UUID.randomUUID().toString(), ADD_FLAG, R.drawable.add_photo, "png");
         //添加按钮
         if (isEditModel) {
             addbtnView();
@@ -118,7 +135,8 @@ public class GxHoriLinearLayout extends HorizontalScrollView {
         GxRoundDelImageView temp = new GxRoundDelImageView(mContext);
         LinearLayout.LayoutParams tempParams = new LinearLayout.LayoutParams(realWidth, realHeight);
         temp.setScaleRealType(ImageView.ScaleType.FIT_XY);
-        temp.setImgEntity(entity, gxImgView -> gxImgView.setImageDrawable(getResources().getDrawable(Integer.parseInt(entity.getUrl()))));
+        temp.setImgEntity(entity, onDrawRealImageListener);
+
         temp.setRaduis(10, 10, 10, 10);
         temp.setLayoutParams(tempParams);
         temp.setClickable(false);
@@ -220,7 +238,6 @@ public class GxHoriLinearLayout extends HorizontalScrollView {
             }
             BaseImageEntity cEntity = cImages.get(i);
             GxRoundDelImageView temp = createImgView(i, cEntity);
-            int finalI = i;
             //删除事件
             if (onHorIvDelClickListener != null) {
                 temp.setDelListener((delImg, entity) -> onHorIvDelClickListener.OnHorIvDelClick(getRealIndex(temp), cEntity, temp));
@@ -287,6 +304,71 @@ public class GxHoriLinearLayout extends HorizontalScrollView {
             drawImages(temparr);
         }
         return entities;
+    }
+
+    /**
+     * 更新entity
+     */
+    private ArrayList<BaseImageEntity> updateEntity(ArrayList<BaseImageEntity> cEntities) {
+        if (cEntities == null || cEntities.size() == 0) {
+            return entities;
+        }
+        for (int i = 0; i < cEntities.size(); i++) {
+            BaseImageEntity cEntity = cEntities.get(i);
+            if (cEntity == null) {
+                continue;
+            }
+            //更新实体
+            for (int j = 0; j < entities.size(); j++) {
+                BaseImageEntity jEntity = entities.get(j);
+                if (jEntity == null) {
+                    continue;
+                }
+                if (cEntity.getId().equals(jEntity.getId())) {
+                    entities.remove(jEntity);
+                    entities.add(j, cEntity);
+                    break;
+                }
+            }
+            //更新imageView
+            for (int j = 0; j < gxImgViews.size(); j++) {
+                GxRoundDelImageView cImageView = gxImgViews.get(j);
+                BaseImageEntity jEntity = cImageView.getImgEntity();
+                if (jEntity == null) {
+                    continue;
+                }
+                if (cEntity.getId().equals(jEntity.getId())) {
+                    gxImgViews.remove(cImageView);
+                    cImageView.setImgEntity(jEntity, onDrawRealImageListener);
+                    //删除事件
+                    if (onHorIvDelClickListener != null) {
+                        cImageView.setDelListener((delImg, entity) ->
+                                onHorIvDelClickListener.OnHorIvDelClick(getRealIndex(cImageView), cEntity, cImageView));
+                    }
+                    //点击事件
+                    if (onHorIvClickListener != null)
+                        cImageView.setRealListener((realImg, imageEntity) -> {
+                            if (!ADD_FLAG.equals(cEntity.getId())) {
+                                if (onHorIvClickListener != null) {
+                                    onHorIvClickListener.OnHorIvClick(getRealIndex(cImageView), cEntity, cImageView);
+                                }
+                            }
+                        });
+                    gxImgViews.add(j, cImageView);
+                    break;
+                }
+            }
+        }
+        return entities;
+    }
+
+    /**
+     * 更新entity
+     */
+    public ArrayList<BaseImageEntity> updateEntity(BaseImageEntity entity) {
+        ArrayList<BaseImageEntity> temp = new ArrayList<>();
+        temp.add(entity);
+        return updateEntity(temp);
     }
 
     /**
