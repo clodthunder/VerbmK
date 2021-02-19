@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.lskj.gx.basic_widget.GxHoriLinearLayout
+        <com.lskj.gx.hori_res.GxHoriLinearLayout
             android:id="@+id/hll_test"
             android:layout_width="match_parent"
             android:layout_height="70dp"

@@ -2,7 +2,7 @@ package com.lskj.gx.verbmk.app
 
 import androidx.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
-import com.lskj.gx.basic_helper.ActivityStackHelper
+import com.lskj.gx.lib_common.ActivityStackHelper
 import com.lskj.gx.lib_common.config.AppContext
 import com.lskj.gx.verbmk.BuildConfig
 

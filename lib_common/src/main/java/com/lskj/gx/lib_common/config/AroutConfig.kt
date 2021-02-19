@@ -17,6 +17,7 @@ class AroutConfig {
         const val A_APP_YBP: String = "/app/ybp_activity"
         const val A_APP_AUDIO: String = "/app/audio_activity"
         const val A_APP_HORI_LINEAR: String = "/app/hori_linear"
+        const val A_App_HORI_PIC_AUDIO: String = "/app/hori_pic_audio"
 
         // 测试livedata com.lskj.gx.verbmk.test
         const val A_APP_LIVE_DATA_TEST: String = "/app/live_data_test"

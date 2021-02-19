@@ -7,14 +7,14 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <!-- 文件读写操作-->
     <uses-permission
         android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
-
-    <!-- 文件读写操作-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
+    <!--  相册权限  -->
+    <uses-permission android:name="android.permission.CAMERA" />
     <!-- 录制音频-->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <!-- 音频监听-->
@@ -26,8 +26,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/app_MyNormalTheme">
         <!--全面屏-->
@@ -88,9 +88,14 @@
             android:name=".AudioActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
-        <!--        测试横向音频、视频、图片、文件控件-->
+        <!--        测试横向图片控件-->
         <activity
             android:name=".HoriLinearActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <!--    测试横向音频音频    -->
+        <activity
+            android:name=".HoriLinearPicAudioActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
     </application>

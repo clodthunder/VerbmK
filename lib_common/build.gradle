@@ -18,19 +18,6 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
-    //arouter
-    kapt {
-        arguments {
-            arg("AROUTER_MODULE_NAME", project.getName())
-        }
-    }
-
-    buildFeatures {
-        //视图绑定
-        viewBinding true
-        //数据绑定
-        dataBinding true
-    }
 
     buildTypes {
         release {
@@ -48,67 +35,20 @@ android {
 }
 
 dependencies {
+
 //moduel comm start
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation rootProject.depsLibs.appcompact
     implementation rootProject.depsLibs.design
+    implementation rootProject.depsLibs.preference_ktx
+    implementation rootProject.depsLibs.constraintlayout
+    implementation rootProject.depsLibs.gson
+    implementation rootProject.depsLibs.converter_gson
     testImplementation rootProject.testLibs.junit
     androidTestImplementation rootProject.testLibs.ext_junit
     testImplementation rootProject.testLibs.espresso
-//    moduel comm end
-
-    //fragment 导航组件
-    implementation 'androidx.navigation:navigation-runtime-ktx:2.3.1'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'
-
-    //fragment
-    implementation 'androidx.fragment:fragment-ktx:1.3.0-beta01'
-
-    //集合组件
-    implementation 'androidx.collection:collection-ktx:1.1.0'
-
-    //生命周期组件
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-beta01'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-beta01'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0-beta01'
-    implementation 'androidx.lifecycle:lifecycle-reactivestreams-ktx:2.3.0-beta01'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-
-    //数据库组件
-    implementation 'androidx.room:room-ktx:2.2.5'
-    implementation 'androidx.sqlite:sqlite-ktx:2.1.0'
-
-    //work 组件
-    implementation 'androidx.work:work-runtime-ktx:2.5.0-beta01'
-
-    //代码实例化布局
+            //代码实例化布局
     implementation "org.jetbrains.anko:anko:$anko_version"
-    //
-    implementation rootProject.depsLibs.constraintlayout
-    //multidex
-    implementation rootProject.depsLibs.multidex
-
-    //rxjava库
-    implementation rootProject.depsLibs.rxjava
-    implementation rootProject.depsLibs.rxandroid
-
-    implementation rootProject.depsLibs.gson
-    implementation rootProject.depsLibs.converter_gson
-
-
-    //glide 图片库
-    implementation rootProject.depsLibs.glide
-    implementation rootProject.depsLibs.glide_okhttp
-    kapt rootProject.depsLibs.glidecompiler
-
-    //arouter库
-    implementation rootProject.depsLibs.arouterapi
-    kapt rootProject.depsLibs.aroutercompiler
-
-    //toolbar
-    implementation rootProject.depsLibs.immersionbar
-    implementation rootProject.depsLibs.immersionbar_ktx
 }

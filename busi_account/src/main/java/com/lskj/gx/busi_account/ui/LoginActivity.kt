@@ -10,9 +10,9 @@ import androidx.lifecycle.viewModelScope
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.gyf.immersionbar.ktx.immersionBar
-import com.lskj.gx.basic_helper.KeyBoardHelper
-import com.lskj.gx.basic_helper.ScreenHelper
-import com.lskj.gx.basic_helper.intfaces.OnKeyBoardChangeListener
+import com.lskj.gx.lib_common.KeyBoardHelper
+import com.lskj.gx.lib_common.ScreenHelper
+import com.lskj.gx.lib_common.OnKeyBoardChangeListener
 import com.lskj.gx.busi_account.R
 import com.lskj.gx.busi_account.SingleLoadingUtil
 import com.lskj.gx.busi_account.databinding.ActActivityLoginBinding

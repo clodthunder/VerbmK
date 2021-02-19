@@ -47,6 +47,7 @@ dependencies {
 //    glide
     implementation rootProject.depsLibs.glide
     implementation rootProject.depsLibs.glide_okhttp
+    implementation rootProject.depsLibs.constraintlayout
     kapt rootProject.depsLibs.glidecompiler
 
     implementation rootProject.depsLibs.appcompact
@@ -56,5 +57,4 @@ dependencies {
     testImplementation rootProject.testLibs.junit
     androidTestImplementation rootProject.testLibs.ext_junit
     testImplementation rootProject.testLibs.espresso
-    implementation project(':basi_entity')
 }

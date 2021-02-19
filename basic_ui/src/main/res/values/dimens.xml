@@ -22,6 +22,8 @@
   <dimen name="ui_font_96">96sp</dimen>
 
   <dimen name="ui_space_0">0dp</dimen>
+  <dimen name="ui_space_1">1dp</dimen>
+  <dimen name="ui_space_5">5dp</dimen>
   <dimen name="ui_space_8">8dp</dimen>
   <dimen name="ui_space_10">10dp</dimen>
   <dimen name="ui_space_16">16dp</dimen>

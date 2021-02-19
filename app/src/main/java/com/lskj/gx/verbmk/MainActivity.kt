@@ -80,6 +80,10 @@ MainActivity : BaseActivity() {
         bding.btnInvokeHoriImg.setOnClickListener {
             ARouter.getInstance().build(AroutConfig.A_APP_HORI_LINEAR).navigation()
         }
+        //调用横向pic_audio
+        bding.btnInvokeHoriPicAudio.setOnClickListener {
+            ARouter.getInstance().build(AroutConfig.A_App_HORI_PIC_AUDIO).navigation()
+        }
         val errorImg: Drawable = resources.getDrawable(R.drawable.default_pic_error_small)
         bding.errorDraw = errorImg
         val holder: Drawable = resources.getDrawable(R.drawable.default_pic_placeholder_small)

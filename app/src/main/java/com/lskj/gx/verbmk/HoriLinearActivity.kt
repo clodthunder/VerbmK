@@ -43,40 +43,52 @@ class HoriLinearActivity : BaseActivity() {
             UUID.randomUUID().toString(),
             "pid1",
             "https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo_2x.jpg",
-            "jpg"
+            "https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo_2x.jpg",
+            "jpg",
+            -1
         )
         val temp2 = BaseImageEntity(
             UUID.randomUUID().toString(),
             "pid2",
             "https://pic4.zhimg.com/80/v2-ca9f77f6487ae1b0d58322ad7897f3fb_1440w.png",
-            "png"
+            "https://pic4.zhimg.com/80/v2-ca9f77f6487ae1b0d58322ad7897f3fb_1440w.png",
+            "png",
+            -1
         )
         val temp3 = BaseImageEntity(
             UUID.randomUUID().toString(),
             "pid3",
             R.drawable.temp3,
-            "jpeg"
+            R.drawable.temp3,
+            "jpeg",
+            -1
         )
         val temp4 = BaseImageEntity(
             UUID.randomUUID().toString(),
             "pid4",
             R.drawable.temp4,
-            "jpeg"
+            R.drawable.temp4,
+            "jpeg",
+            -1
         )
         val temp5 = BaseImageEntity(
             UUID.randomUUID().toString(),
             "pid5",
             R.drawable.temp,
-            "jpg"
+            R.drawable.temp,
+            "jpg",
+            -1
         )
         val temp6 = BaseImageEntity(
             UUID.randomUUID().toString(),
             "pid6",
             R.drawable.temp4,
-            "jpeg"
+            R.drawable.temp4,
+            "jpeg",
+            -1
         )
 
-        //实例化4张图片 用于测试
+//        实例化4张图片 用于测试
         images.add(temp)
         images.add(temp2)
         images.add(temp3)
@@ -103,7 +115,9 @@ class HoriLinearActivity : BaseActivity() {
                 UUID.randomUUID().toString(),
                 "add-pid6",
                 R.drawable.temp4,
-                "jpeg"
+                R.drawable.temp4,
+                "jpeg",
+                -1
             )
             bding.hllTest.addEntity(temp7);
         }
@@ -117,9 +131,10 @@ class HoriLinearActivity : BaseActivity() {
             bding.hllTest.setImages(images)
         }
         bding.btnUpdate.setOnClickListener {
-            temp.url = "https://static.runoob.com/images/demo/demo2.jpg"
             temp.pid = "pid_update"
-            temp.suffix = "jpg"
+            temp.cover = "https://static.runoob.com/images/demo/demo2.jpg"
+            temp.source = "https://static.runoob.com/images/demo/demo2.jpg"
+            temp.sourceSuffix = "jpg"
             bding.hllTest.updateEntity(temp)
         }
     }

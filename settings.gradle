@@ -1,12 +1,11 @@
+include ':hori_res'
 include ':library'
 include ':lib_common'
 include ':basic_okhttp'
-include ':basi_entity'
 include ':basic_entity'
 include ':basic_widget'
 include ':busi_home'
 include ':basic_ui'
 include ':busi_account'
-include ':basic_helper'
 include ':app'
 rootProject.name = "VerbmK"

@@ -4,11 +4,11 @@ import android.app.Activity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.lskj.gx.hori_res.PreViewAudioDialog
+import com.lskj.gx.hori_res.RecordAudioDialog
 import com.lskj.gx.lib_common.base.activity.BaseActivity
 import com.lskj.gx.lib_common.config.AroutConfig
 import com.lskj.gx.verbmk.databinding.ActivityAudioBinding
-import com.lskj.gx.verbmk.dialog.PreViewAudioDialog
-import com.lskj.gx.verbmk.dialog.RecordAudioDialog
 import org.jetbrains.anko.toast
 import java.io.File
 
